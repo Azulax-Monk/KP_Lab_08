@@ -17,7 +17,15 @@ public class MainController {
 
     public MainController() {
         Program p = new Program();
-        p.start();
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                p.start();
+            }
+        });
+
+        t.start();
     }
 
     @FXML

@@ -1,17 +1,21 @@
 package com.example.lab_08.classes;
 
 import com.example.lab_08.enums.SupplierState;
+import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
 
 public class WarehouseController {
     private IWarehouse assignedWarehouse;
-    //private ArrayList<ISupplier> supplierList;
+    private ArrayList<ISupplier> supplierList;
 
     public WarehouseController(IWarehouse assignedWarehouse) {
         this.assignedWarehouse = assignedWarehouse;
-        // supplierList = suppliers
+    }
+
+    public void setSuppliers(ArrayList<ISupplier> suppliers) {
+        this.supplierList = suppliers;
     }
 
     public IWarehouse getWarehouse() {
@@ -19,7 +23,6 @@ public class WarehouseController {
     }
 
     public boolean pushItem(Object item) {
-
         if (!assignedWarehouse.isFull()) {
             assignedWarehouse.pushItem(item);
             return true;

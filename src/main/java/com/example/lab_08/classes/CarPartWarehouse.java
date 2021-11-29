@@ -64,6 +64,6 @@ public class CarPartWarehouse implements IWarehouse {
 
     @Override
     public WarehouseType getType() {
-        return null;
+        return warehouseType;
     }
 }

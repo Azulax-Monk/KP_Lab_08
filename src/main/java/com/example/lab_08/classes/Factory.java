@@ -22,14 +22,42 @@ public class Factory {
 
     public void start() {
         // start all suppliers + warehouses?
-        for (var supplier: carSuppliers)
-            supplier.run();
-        for (var supplier: engineSuppliers)
-            supplier.run();
-        for (var supplier: bodySuppliers)
-            supplier.run();
-        for (var supplier: accessorySuppliers)
-            supplier.run();
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (var supplier: carSuppliers)
+                    supplier.run();
+            }
+        });
+        t1.start();
+
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (var supplier: engineSuppliers)
+                    supplier.run();
+            }
+        });
+        t2.start();
+
+        Thread t3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (var supplier: bodySuppliers)
+                    supplier.run();
+            }
+        });
+        t3.start();
+
+
+        Thread t4 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (var supplier: accessorySuppliers)
+                    supplier.run();
+            }
+        });
+        t4.start();
     }
 
     private void initialize() {
@@ -58,7 +86,12 @@ public class Factory {
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ACCESSORY_WAREHOUSE)));
 
         for (int i = 0; i < settings.getSupplierCount(); i++) {
-            carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.CAR_WAREHOUSE)));
+            carSuppliers.add(new CarSupplier(
+                            getWarehouseController(WarehouseType.CAR_WAREHOUSE),
+                            getWarehouseController(WarehouseType.ENGINE_WAREHOUSE),
+                            getWarehouseController(WarehouseType.BODY_WAREHOUSE),
+                            getWarehouseController(WarehouseType.ACCESSORY_WAREHOUSE)
+                            ));
             engineSuppliers.add(new EngineSupplier(getWarehouseController(WarehouseType.ENGINE_WAREHOUSE)));
             bodySuppliers.add(new BodySupplier(getWarehouseController(WarehouseType.BODY_WAREHOUSE)));
             accessorySuppliers.add(new AccessorySupplier(getWarehouseController(WarehouseType.ACCESSORY_WAREHOUSE)));
