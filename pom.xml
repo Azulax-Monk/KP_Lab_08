@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.lab_08/com.example.lab_08.HelloApplication</mainClass>
+                            <mainClass>com.example.lab_08/com.example.lab_08.MainApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import java.net.URL?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import com.example.lab_08.utils.WrappedImageView?>
+<?import javafx.scene.text.Text?>
+
+<?import com.example.lab_08.custom_controls.CarSupplierCustomControl?>
+<?import com.example.lab_08.custom_controls.DetailSupplierCustomControl?>
+<?import com.example.lab_08.custom_controls.WarehouseCustomControl?>
+<?import com.example.lab_08.custom_controls.DealerCustomControl?>
+<GridPane alignment="CENTER"
+          xmlns:fx="http://javafx.com/fxml"
+
+          fx:controller="com.example.lab_08.MainController">
+
+    <rowConstraints>
+        <RowConstraints percentHeight="10" />
+        <RowConstraints percentHeight="25" />
+        <RowConstraints percentHeight="100" />
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints percentWidth="100" />
+    </columnConstraints>
+
+    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="menu-pane" >
+
+    </GridPane>
+
+    <GridPane GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="config-pane">
+        <rowConstraints>
+            <RowConstraints percentHeight="100" />
+            <RowConstraints percentHeight="100" />
+        </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="100" />
+            <ColumnConstraints percentWidth="100" />
+            <ColumnConstraints percentWidth="100" />
+            <ColumnConstraints percentWidth="100" />
+            <ColumnConstraints percentWidth="100" />
+            <ColumnConstraints percentWidth="100" />
+        </columnConstraints>
+
+        <Label text="Engine production speed" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Slider GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Label text="Body production speed" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Slider GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="Accessory production speed" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Slider GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Label text="Car production speed" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Slider GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Label text="Dealer request speed" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+        <Slider GridPane.columnIndex="5" GridPane.rowIndex="0" />
+    </GridPane>
+
+    <GridPane GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="elements-pane">
+        <rowConstraints>
+            <RowConstraints percentHeight="100" />
+        </rowConstraints>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="100" hgrow="NEVER" />
+            <ColumnConstraints percentWidth="100" hgrow="NEVER" />
+            <ColumnConstraints percentWidth="100" hgrow="NEVER" />
+            <ColumnConstraints percentWidth="100" hgrow="NEVER" />
+            <ColumnConstraints percentWidth="100" hgrow="NEVER" />
+        </columnConstraints>
+
+        <VBox fx:id="supplierGroup" GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <DetailSupplierCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="0"
+                    name="Engine supplier"
+                    />
+            <DetailSupplierCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    name="Body supplier"
+            />
+            <DetailSupplierCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="2"
+                    name="Accessory supplier"
+            />
+        </VBox>
+
+        <VBox fx:id="warehouseGroup" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <WarehouseCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="0"
+                    name="Engine warehouse"/>
+            <WarehouseCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    name="Body warehouse"/>
+            <WarehouseCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="2"
+                    name="Accessory warehouse"/>
+        </VBox>
+
+        <GridPane fx:id="carSup" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <rowConstraints>
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+
+            <CarSupplierCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    name="Car supplier"
+            />
+        </GridPane>
+
+        <GridPane GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <rowConstraints>
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+
+            <WarehouseCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    name="Car warehouse"/>
+        </GridPane>
+
+        <GridPane GridPane.columnIndex="4" GridPane.rowIndex="0">
+            <rowConstraints>
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+                <RowConstraints percentHeight="100" />
+            </rowConstraints>
+            <columnConstraints>
+                <ColumnConstraints percentWidth="100" />
+            </columnConstraints>
+
+            <DealerCustomControl
+                    GridPane.columnIndex="0"
+                    GridPane.rowIndex="1"
+                    name="Dealer"/>
+        </GridPane>
+    </GridPane>
+
+    <stylesheets>
+        <URL value="@../styles.css" />
+    </stylesheets>
+</GridPane>
+

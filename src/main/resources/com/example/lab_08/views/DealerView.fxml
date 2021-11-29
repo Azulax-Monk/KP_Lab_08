@@ -1,0 +1,16 @@
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.example.lab_08.utils.WrappedImageView?>
+<?import javafx.scene.image.Image?>
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml" styleClass="icon-group">
+    <WrappedImageView preserveRatio="true">
+        <image>
+            <Image url="@../icons/dealer.png" />
+        </image>
+    </WrappedImageView>
+    <Label fx:id="nameField" text="Dealer" styleClass="header"/>
+    <Label fx:id="carsCountField" text="Car bought: "/>
+    <Label fx:id="stateField" text="State: "/>
+</fx:root>

@@ -1,0 +1,42 @@
+Label {
+    -fx-wrap-text: true;
+    -fx-font-family: Calibri;
+    -fx-font-weight: 600;
+    -fx-font-size: 14;
+}
+
+.header {
+    -fx-font-weight: bold;
+    -fx-font-style: oblique;
+}
+
+.item {
+    -fx-alignment: center-left;
+    -fx-text-alignment: left;
+}
+
+Text {
+    -fx-wrap-text: true;
+}
+
+.icon-group {
+    -fx-alignment: CENTER;
+    -fx-padding: 10;
+    -fx-wrap-text: true;
+}
+
+.menu-pane {
+    -fx-background-color: #aeaeae;
+}
+
+.config-pane {
+    -fx-background-color: #e2d6e4;
+    -fx-hgap: 10;
+    -fx-padding: 10;
+}
+
+.elements-pane {
+    -fx-background-color: #b4cfcb;
+    -fx-grid-lines-visible: true;
+    -fx-stroke-width: 0.5;
+}
