@@ -1,6 +1,7 @@
 package com.example.lab_08.classes;
 
 import com.example.lab_08.enums.WarehouseType;
+import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
@@ -100,6 +101,21 @@ public class Factory {
             bodySuppliers.add(new BodySupplier(getWarehouseController(WarehouseType.BODY_WAREHOUSE)));
             accessorySuppliers.add(new AccessorySupplier(getWarehouseController(WarehouseType.ACCESSORY_WAREHOUSE)));
         }
+
+        warehouseControllers.get(0).setSuppliers(carSuppliers);
+        warehouseControllers.get(1).setSuppliers(engineSuppliers);
+        warehouseControllers.get(2).setSuppliers(bodySuppliers);
+        warehouseControllers.get(3).setSuppliers(accessorySuppliers);
+
+/*
+        for (var carSupplier: carSuppliers)
+            warehouseControllers.get(0).setSuppliers(carSupplier);
+        for (var carSupplier: engineSuppliers)
+            warehouseControllers.get(1).setSuppliers(engineSuppliers);
+        for (var carSupplier: carSuppliers)
+            warehouseControllers.get(2).setSuppliers(bodySuppliers);
+        for (var carSupplier: carSuppliers)
+            warehouseControllers.get(3).setSuppliers(accessorySuppliers);*/
     }
 
     public IWarehouse getWarehouse(WarehouseType type) {

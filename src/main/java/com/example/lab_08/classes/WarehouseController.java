@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 public class WarehouseController {
     private IWarehouse assignedWarehouse;
-    private ArrayList<ISupplier> supplierList;
+    private ArrayList<? extends ISupplier> supplierList;
 
     public WarehouseController(IWarehouse assignedWarehouse) {
         this.assignedWarehouse = assignedWarehouse;
     }
 
-    public void setSuppliers(ArrayList<ISupplier> suppliers) {
+    public void setSuppliers(ArrayList<? extends ISupplier> suppliers) {
         this.supplierList = suppliers;
     }
 
