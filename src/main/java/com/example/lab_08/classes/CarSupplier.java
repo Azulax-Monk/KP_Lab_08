@@ -21,6 +21,11 @@ public class CarSupplier implements ISupplier {
     }
 
     @Override
+    public void setState(SupplierState state) {
+        this.state = state;
+    }
+
+    @Override
     public void run() {
         while (true) {
             try {

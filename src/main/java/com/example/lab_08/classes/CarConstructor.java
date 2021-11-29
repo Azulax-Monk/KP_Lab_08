@@ -18,9 +18,7 @@ public class CarConstructor implements ICarBuilder {
     }
 
     @Override
-    public Engine getEngine() {
-        return (Engine) engineWarehouseController.popItem();
-    }
+    public Engine getEngine() { return (Engine) engineWarehouseController.popItem(); }
 
     @Override
     public Body getBody() {

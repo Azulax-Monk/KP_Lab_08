@@ -6,9 +6,10 @@ public class DealerAgency {
     private ArrayList<Dealer> dealers;
     private Settings settings;
 
-    public DealerAgency(Settings settings) {
+    public DealerAgency(Settings settings, WarehouseController warehouseController) {
         this.dealers = new ArrayList<>();
         this.settings = settings;
+        initialize(warehouseController);
     }
 
     public void start() {

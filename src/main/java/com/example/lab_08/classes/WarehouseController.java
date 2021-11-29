@@ -45,7 +45,8 @@ public class WarehouseController {
     }
 
     public void notifySuppliers(SupplierState state) {
-        // foreach (s : supplierList)
-        //      s.state = state
+        for (var s : supplierList) {
+            s.setState(state);
+        }
     }
 }
