@@ -13,7 +13,7 @@ public class CarSupplier implements ISupplier {
                        WarehouseController bodyWC, WarehouseController accessoryWC) {
         this.carWarehouseController = carWC;
         this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
-        this.state = false;
+        this.state = true;
     }
 
     public CarSupplier(WarehouseController warehouseController) {

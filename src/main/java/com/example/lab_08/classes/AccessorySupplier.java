@@ -7,7 +7,10 @@ public class AccessorySupplier implements ISupplier {
     private WarehouseController warehouseController;
     private boolean state;
 
-    public AccessorySupplier(WarehouseController warehouseController) { this.warehouseController = warehouseController; }
+    public AccessorySupplier(WarehouseController warehouseController) {
+        this.warehouseController = warehouseController;
+        this.state = true;
+    }
 
     @Override
     public void run() {

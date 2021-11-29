@@ -7,7 +7,10 @@ public class EngineSupplier implements ISupplier {
     private WarehouseController warehouseController;
     private boolean state;
 
-    public EngineSupplier(WarehouseController warehouseController) { this.warehouseController = warehouseController; }
+    public EngineSupplier(WarehouseController warehouseController) {
+        this.warehouseController = warehouseController;
+        this.state = true;
+    }
 
     @Override
     public void run() {

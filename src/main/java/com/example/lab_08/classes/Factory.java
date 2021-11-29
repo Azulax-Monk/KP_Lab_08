@@ -15,6 +15,10 @@ public class Factory {
     private Settings settings;
 
     public Factory(Settings settings) {
+        carSuppliers = new ArrayList<>();
+        engineSuppliers = new ArrayList<>();
+        bodySuppliers = new ArrayList<>();
+        accessorySuppliers = new ArrayList<>();
         this.settings = settings;
     }
 
