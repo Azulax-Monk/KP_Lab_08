@@ -28,9 +28,7 @@ public class CarConstructor implements ICarBuilder {
     }
 
     @Override
-    public Accessory getAccessory() {
-        return (Accessory) accessoryWarehouseController.popItem();
-    }
+    public Accessory getAccessory() { return (Accessory) accessoryWarehouseController.popItem(); }
 
     @Override
     public Car construct() {
