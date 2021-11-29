@@ -1,7 +1,7 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
-import com.example.lab_08.Classes.Interfaces.ICarBuilder;
-import com.example.lab_08.Classes.Interfaces.ISupplier;
+import com.example.lab_08.interfaces.ICarBuilder;
+import com.example.lab_08.interfaces.ISupplier;
 
 public class CarSupplier implements ISupplier {
     private Car carToSupply;

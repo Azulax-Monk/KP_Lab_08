@@ -1,9 +1,9 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
-import com.example.lab_08.Classes.Interfaces.ISupplier;
+import com.example.lab_08.interfaces.ISupplier;
 
-public class BodySupplier implements ISupplier {
-    private Body bodyToSupply;
+public class AccessorySupplier implements ISupplier {
+    private Accessory accessoryToSupply;
     private WarehouseController warehouseController;
     private boolean state;
 
@@ -12,7 +12,7 @@ public class BodySupplier implements ISupplier {
         while (true) {
             // wait some time
             if (this.state) {
-                bodyToSupply = orderToConstruct();
+                accessoryToSupply = orderToConstruct();
                 store();
             }
             else {
@@ -22,14 +22,14 @@ public class BodySupplier implements ISupplier {
     }
 
     @Override
-    public Body orderToConstruct() {
-        return new BodyConstructor().construct();
+    public Accessory orderToConstruct() {
+        return new AccessoryConstructor().construct();
     }
 
     @Override
     public boolean store() {
-        if (warehouseController.pushItem(bodyToSupply)) {
-            bodyToSupply = null;
+        if (warehouseController.pushItem(accessoryToSupply)) {
+            accessoryToSupply = null;
             return true;
         }
         else {

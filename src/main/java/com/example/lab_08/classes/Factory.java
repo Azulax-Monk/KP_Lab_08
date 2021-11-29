@@ -1,4 +1,4 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,9 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
-import com.example.lab_08.Classes.Interfaces.ICarBuilder;
-import com.example.lab_08.Classes.Interfaces.ISupplier;
+import com.example.lab_08.interfaces.ISupplier;
 
-public class EngineSupplier implements ISupplier {
-    private Engine engineToSupply;
+public class BodySupplier implements ISupplier {
+    private Body bodyToSupply;
     private WarehouseController warehouseController;
     private boolean state;
 
@@ -13,7 +12,7 @@ public class EngineSupplier implements ISupplier {
         while (true) {
             // wait some time
             if (this.state) {
-                engineToSupply = orderToConstruct();
+                bodyToSupply = orderToConstruct();
                 store();
             }
             else {
@@ -23,14 +22,14 @@ public class EngineSupplier implements ISupplier {
     }
 
     @Override
-    public Engine orderToConstruct() {
-        return new EngineConstructor().construct();
+    public Body orderToConstruct() {
+        return new BodyConstructor().construct();
     }
 
     @Override
     public boolean store() {
-        if (warehouseController.pushItem(engineToSupply)) {
-            engineToSupply = null;
+        if (warehouseController.pushItem(bodyToSupply)) {
+            bodyToSupply = null;
             return true;
         }
         else {

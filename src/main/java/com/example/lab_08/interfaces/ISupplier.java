@@ -1,4 +1,4 @@
-package com.example.lab_08.Classes.Interfaces;
+package com.example.lab_08.interfaces;
 
 public interface ISupplier {
     public void run();

@@ -1,6 +1,6 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
-import com.example.lab_08.Classes.Interfaces.IConstructor;
+import com.example.lab_08.interfaces.IConstructor;
 
 public class EngineConstructor implements IConstructor {
     @Override

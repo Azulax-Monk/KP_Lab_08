@@ -1,6 +1,6 @@
-package com.example.lab_08.Classes;
+package com.example.lab_08.classes;
 
-import com.example.lab_08.Classes.Interfaces.ICarBuilder;
+import com.example.lab_08.interfaces.ICarBuilder;
 
 public class CarConstructor implements ICarBuilder {
     private WarehouseController engineWarehouseController;
