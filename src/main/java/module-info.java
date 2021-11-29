@@ -10,4 +10,6 @@ module com.example.lab_08 {
     exports com.example.lab_08;
     exports com.example.lab_08.utils;
     exports com.example.lab_08.custom_controls;
+    exports com.example.lab_08.enums;
+    opens com.example.lab_08.enums to javafx.fxml;
 }

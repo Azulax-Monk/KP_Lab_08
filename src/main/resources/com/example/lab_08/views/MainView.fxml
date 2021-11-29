@@ -22,7 +22,6 @@
 <?import com.example.lab_08.custom_controls.DealerCustomControl?>
 <GridPane alignment="CENTER"
           xmlns:fx="http://javafx.com/fxml"
-
           fx:controller="com.example.lab_08.MainController">
 
     <rowConstraints>
