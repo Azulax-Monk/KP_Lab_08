@@ -7,6 +7,8 @@ public class EngineSupplier implements ISupplier {
     private WarehouseController warehouseController;
     private boolean state;
 
+    public EngineSupplier(WarehouseController warehouseController) { this.warehouseController = warehouseController; }
+
     @Override
     public void run() {
         while (true) {

@@ -19,11 +19,15 @@ public class Factory {
     }
 
     public void start() {
-        // start all suppliers + warehouses
+        // start all suppliers + warehouses?
         for (var supplier: carSuppliers)
             supplier.run();
-
-        // ...
+        for (var supplier: engineSuppliers)
+            supplier.run();
+        for (var supplier: bodySuppliers)
+            supplier.run();
+        for (var supplier: accessorySuppliers)
+            supplier.run();
     }
 
     private void initialize() {
@@ -46,19 +50,19 @@ public class Factory {
 
         for (int i = 0; i < settings.getSupplierCount(); i++) {
             carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.CAR_WAREHOUSE)));
-            carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.ENGINE_WAREHOUSE)));
-            carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.BODY_WAREHOUSE)));
-            carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.ACCESSORY_WAREHOUSE)));
+            engineSuppliers.add(new EngineSupplier(getWarehouseController(WarehouseType.ENGINE_WAREHOUSE)));
+            bodySuppliers.add(new BodySupplier(getWarehouseController(WarehouseType.BODY_WAREHOUSE)));
+            accessorySuppliers.add(new AccessorySupplier(getWarehouseController(WarehouseType.ACCESSORY_WAREHOUSE)));
         }
     }
 
     public IWarehouse getWarehouse(WarehouseType type) {
         return warehouses.stream().filter(warehouse -> warehouse.getType() ==
-                type.CAR_WAREHOUSE).findFirst().get();
+                type).findFirst().get();
     }
 
     public WarehouseController getWarehouseController(WarehouseType type) {
         return warehouseControllers.stream().filter(controller -> controller.getWarehouse().getType() ==
-                type.CAR_WAREHOUSE).findFirst().get();
+                type).findFirst().get();
     }
 }

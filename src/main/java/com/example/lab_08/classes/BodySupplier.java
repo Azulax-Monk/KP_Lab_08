@@ -7,6 +7,8 @@ public class BodySupplier implements ISupplier {
     private WarehouseController warehouseController;
     private boolean state;
 
+    public BodySupplier(WarehouseController warehouseController) { this.warehouseController = warehouseController; }
+
     @Override
     public void run() {
         while (true) {
