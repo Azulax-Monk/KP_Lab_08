@@ -11,6 +11,12 @@ public class CarConstructor implements ICarBuilder {
         // to be upd
     }
 
+    public CarConstructor(WarehouseController engineWC, WarehouseController bodyWC, WarehouseController accessoryWC) {
+        this.engineWarehouseController = engineWC;
+        this.bodyWarehouseController = bodyWC;
+        this.accessoryWarehouseController = accessoryWC;
+    }
+
     @Override
     private Engine getEngine() {
         return engineWarehouseController.popItem();
