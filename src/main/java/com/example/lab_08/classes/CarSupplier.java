@@ -1,5 +1,6 @@
 package com.example.lab_08.classes;
 
+import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ICarBuilder;
 import com.example.lab_08.interfaces.ISupplier;
 
@@ -7,7 +8,7 @@ public class CarSupplier implements ISupplier {
     private Car carToSupply;
     private WarehouseController carWarehouseController;
     private ICarBuilder carConstructor;
-    private boolean state;
+    private SupplierState state;
     private long speedTime;
     private final long waitTime = 100;
 
@@ -15,7 +16,7 @@ public class CarSupplier implements ISupplier {
                        WarehouseController bodyWC, WarehouseController accessoryWC) {
         this.carWarehouseController = carWC;
         this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
-        this.state = false;
+        this.state = SupplierState.STOPPED;
         speedTime = 5000;
     }
 
@@ -28,12 +29,12 @@ public class CarSupplier implements ISupplier {
                 e.printStackTrace();
             }
 
-            if (this.state) {
+            if (this.state.equals(SupplierState.WORKING)) {
                 carToSupply = orderToConstruct();
                 store();
             }
             else {
-                while (!this.state) {
+                while (this.state.equals(SupplierState.STOPPED)) {
                     try {
                         Thread.sleep(waitTime);
                     } catch (InterruptedException e) {
@@ -58,7 +59,7 @@ public class CarSupplier implements ISupplier {
             return true;
         }
         else {
-            this.state = false;
+            this.state = SupplierState.STOPPED;
             System.out.println("Failed to store car");
             return false;
         }

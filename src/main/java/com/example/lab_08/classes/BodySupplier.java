@@ -1,18 +1,19 @@
 package com.example.lab_08.classes;
 
+import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ISupplier;
 
 public class BodySupplier implements ISupplier {
     private Body bodyToSupply;
     private WarehouseController warehouseController;
-    private boolean state;
+    private SupplierState state;
     private long speedTime;
     private final long waitTime = 100;
 
     public BodySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
         speedTime = 5000;
-        state = true;
+        state = SupplierState.WORKING;
     }
 
     @Override
@@ -24,12 +25,12 @@ public class BodySupplier implements ISupplier {
                 e.printStackTrace();
             }
 
-            if (this.state) {
+            if (this.state.equals(SupplierState.WORKING)) {
                 bodyToSupply = orderToConstruct();
                 store();
             }
             else {
-                while (!this.state) {
+                while (this.state.equals(SupplierState.STOPPED)) {
                     try {
                         Thread.sleep(waitTime);
                     } catch (InterruptedException e) {
@@ -54,7 +55,7 @@ public class BodySupplier implements ISupplier {
             return true;
         }
         else {
-            this.state = false;
+            this.state = SupplierState.STOPPED;
             System.out.println("Failed to store accessory");
             return false;
         }
