@@ -16,23 +16,17 @@ public class Settings {
     private final String filepath = "settings.config";
 
     public Settings() {
-        deserialize();
+
     }
 
-    private void deserialize() {
+    public static Settings deserialize() {
+        final String filepath = "settings.config";
         GsonBuilder builder = new GsonBuilder();
         builder.setPrettyPrinting();
         Gson gson = builder.create();
 
         String content = readFile(filepath);
-        Settings s = gson.fromJson(content, Settings.class);
-
-        this.carWarehouseSize = s.carWarehouseSize;
-        this.engineWarehouseSize = s.engineWarehouseSize;
-        this.bodyWarehouseSize = s.bodyWarehouseSize;
-        this.accessoryWarehouseSize = s.accessoryWarehouseSize;
-        this.supplierCount = s.supplierCount;
-        this.dealerCount = s.dealerCount;
+        return gson.fromJson(content, Settings.class);
     }
 
     public static void serialize() {

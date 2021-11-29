@@ -11,7 +11,7 @@ public class Program {
     }
 
     private void initialize() {
-        Settings settings = new Settings();
+        Settings settings = Settings.deserialize();
         factory = new Factory(settings);
         dealerAgency = new DealerAgency(settings);
     }
