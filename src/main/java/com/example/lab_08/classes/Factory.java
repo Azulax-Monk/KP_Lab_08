@@ -1,5 +1,8 @@
 package com.example.lab_08.classes;
 
+import com.example.lab_08.enums.WarehouseType;
+import com.example.lab_08.interfaces.IWarehouse;
+
 import java.util.ArrayList;
 
 public class Factory {
@@ -24,20 +27,16 @@ public class Factory {
     }
 
     private void initialize() {
-        CarWarehouse carWH = new CarWarehouse(settings.carWarehouseSize);
-        carWH.type = WarehouseType.CAR_WAREHOUSE;
+        CarWarehouse carWH = new CarWarehouse(settings.getCarWarehouseSize());
         warehouses.add(carWH);
 
-        CarPartWarehouse engineWH = new CarPartWarehouse(settings.engineWarehouseSize);             // to be upd
-        engineWH.type = WarehouseType.ENGINE_WAREHOUSE;
+        CarPartWarehouse engineWH = new CarPartWarehouse(settings.getEngineWarehouseSize(), WarehouseType.ENGINE_WAREHOUSE);             // to be upd
         warehouses.add(engineWH);
 
-        CarPartWarehouse bodyWH = new CarPartWarehouse(settings.bodyWarehouseSize);
-        bodyWH.type = WarehouseType.BODY_WAREHOUSE;
+        CarPartWarehouse bodyWH = new CarPartWarehouse(settings.getBodyWarehouseSize(), WarehouseType.BODY_WAREHOUSE);
         warehouses.add(bodyWH);
 
-        CarPartWarehouse accessoryWH = new CarPartWarehouse(settings.accessoryWarehouseSize);
-        accessoryWH.type = WarehouseType.ACCESSORY_WAREHOUSE;
+        CarPartWarehouse accessoryWH = new CarPartWarehouse(settings.getAccessoryWarehouseSize(), WarehouseType.ACCESSORY_WAREHOUSE);
         warehouses.add(accessoryWH);
 
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.CAR_WAREHOUSE)));       // hardcode
@@ -45,7 +44,7 @@ public class Factory {
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.BODY_WAREHOUSE)));
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ACCESSORY_WAREHOUSE)));
 
-        for (int i = 0; i < settings.supplierCount; i++) {
+        for (int i = 0; i < settings.getSupplierCount(); i++) {
             carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.CAR_WAREHOUSE)));
             carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.ENGINE_WAREHOUSE)));
             carSuppliers.add(new CarSupplier(getWarehouseController(WarehouseType.BODY_WAREHOUSE)));
@@ -53,13 +52,13 @@ public class Factory {
         }
     }
 
-    public WarehouseController getWarehouse(WarehouseType type) {
-        return warehouses.stream().filter(warehouse -> warehouse.type ==
+    public IWarehouse getWarehouse(WarehouseType type) {
+        return warehouses.stream().filter(warehouse -> warehouse.getType() ==
                 type.CAR_WAREHOUSE).findFirst().get();
     }
 
     public WarehouseController getWarehouseController(WarehouseType type) {
-        return warehouseControllers.stream().filter(controller -> controller.assignedWarehouse.type ==
+        return warehouseControllers.stream().filter(controller -> controller.getWarehouse().getType() ==
                 type.CAR_WAREHOUSE).findFirst().get();
     }
 }

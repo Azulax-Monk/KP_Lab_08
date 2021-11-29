@@ -18,18 +18,18 @@ public class CarConstructor implements ICarBuilder {
     }
 
     @Override
-    private Engine getEngine() {
-        return engineWarehouseController.popItem();
+    public Engine getEngine() {
+        return (Engine) engineWarehouseController.popItem();
     }
 
     @Override
-    private Body getBody() {
-        return bodyWarehouseController.popItem();
+    public Body getBody() {
+        return (Body) bodyWarehouseController.popItem();
     }
 
     @Override
-    private Accessory getAccessory() {
-        return accessoryWarehouseController.popItem();
+    public Accessory getAccessory() {
+        return (Accessory) accessoryWarehouseController.popItem();
     }
 
     @Override
@@ -41,6 +41,6 @@ public class CarConstructor implements ICarBuilder {
         if (engine == null || body == null || accessory == null)
             return null;
         else
-            return new Car(engine, body, accessory);
+            return new Car(body, engine, accessory);
     }
 }

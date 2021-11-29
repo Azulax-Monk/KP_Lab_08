@@ -16,6 +16,10 @@ public class CarSupplier implements ISupplier {
         this.state = false;
     }
 
+    public CarSupplier(WarehouseController warehouseController) {
+        carWarehouseController = warehouseController;
+    }
+
     @Override
     public void run() {
         while (true) {
