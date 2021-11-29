@@ -9,6 +9,13 @@ public class CarSupplier implements ISupplier {
     private ICarBuilder carConstructor;
     private boolean state;
 
+    public CarSupplier(WarehouseController carWC, WarehouseController engineWC,
+                       WarehouseController bodyWC, WarehouseController accessoryWC) {
+        this.carWarehouseController = carWC;
+        this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
+        this.state = false;
+    }
+
     @Override
     public void run() {
         while (true) {

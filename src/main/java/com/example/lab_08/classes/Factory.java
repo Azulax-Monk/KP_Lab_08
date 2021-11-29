@@ -17,12 +17,28 @@ public class Factory {
 
     public void start() {
         // start all suppliers + warehouses
+        for (var supplier: carSuppliers)
+            supplier.run();
+
+        // ...
     }
 
     private void initialize() {
-        warehouses.add(new CarWarehouse());
-        for (int i = 0; i < 3; i++)             // hardcode
-            warehouses.add(new CarPartWarehouse());
+        CarWarehouse carWH = new CarWarehouse(settings.carWarehouseSize);
+        carWH.type = WarehouseType.CAR_WAREHOUSE;
+        warehouses.add(carWH);
+
+        CarPartWarehouse engineWH = new CarPartWarehouse(settings.engineWarehouseSize);             // to be upd
+        engineWH.type = WarehouseType.ENGINE_WAREHOUSE;
+        warehouses.add(engineWH);
+
+        CarPartWarehouse bodyWH = new CarPartWarehouse(settings.bodyWarehouseSize);
+        bodyWH.type = WarehouseType.BODY_WAREHOUSE;
+        warehouses.add(bodyWH);
+
+        CarPartWarehouse accessoryWH = new CarPartWarehouse(settings.accessoryWarehouseSize);
+        accessoryWH.type = WarehouseType.ACCESSORY_WAREHOUSE;
+        warehouses.add(accessoryWH);
 
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.CAR_WAREHOUSE)));       // hardcode
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ENGINE_WAREHOUSE)));
