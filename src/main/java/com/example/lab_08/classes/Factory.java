@@ -4,6 +4,7 @@ import com.example.lab_08.enums.WarehouseType;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Factory {
     private ArrayList<CarSupplier> carSuppliers;
@@ -20,6 +21,7 @@ public class Factory {
         bodySuppliers = new ArrayList<>();
         accessorySuppliers = new ArrayList<>();
         this.settings = settings;
+        initialize();
     }
 
     public void start() {
@@ -35,6 +37,13 @@ public class Factory {
     }
 
     private void initialize() {
+        carSuppliers = new ArrayList<>();
+        engineSuppliers = new ArrayList<>();
+        bodySuppliers = new ArrayList<>();
+        accessorySuppliers = new ArrayList<>();
+        warehouses = new ArrayList<>();
+        warehouseControllers = new ArrayList<>();
+
         CarWarehouse carWH = new CarWarehouse(settings.getCarWarehouseSize());
         warehouses.add(carWH);
 
@@ -48,8 +57,8 @@ public class Factory {
         warehouses.add(accessoryWH);
 
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.CAR_WAREHOUSE)));       // hardcode
-        warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ENGINE_WAREHOUSE)));
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.BODY_WAREHOUSE)));
+        warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ENGINE_WAREHOUSE)));
         warehouseControllers.add(new WarehouseController(getWarehouse(WarehouseType.ACCESSORY_WAREHOUSE)));
 
         for (int i = 0; i < settings.getSupplierCount(); i++) {

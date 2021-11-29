@@ -1,5 +1,9 @@
 package com.example.lab_08;
 
+import com.example.lab_08.classes.Program;
+import com.example.lab_08.classes.Settings;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -12,7 +16,8 @@ public class MainController {
     ImageView g1Icon;
 
     public MainController() {
-
+        Program p = new Program();
+        p.start();
     }
 
     @FXML

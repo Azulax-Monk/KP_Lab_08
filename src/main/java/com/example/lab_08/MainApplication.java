@@ -1,5 +1,6 @@
 package com.example.lab_08;
 
+import com.example.lab_08.classes.Settings;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
