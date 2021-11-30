@@ -1,6 +1,7 @@
 package com.example.lab_08;
 
 import com.example.lab_08.classes.Settings;
+import com.example.lab_08.classes.ThreadPool;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +18,12 @@ public class MainApplication extends Application {
         stage.setTitle("Car factory");
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop(){
+        System.out.println("Stage is closing");
+        ThreadPool.getInstance().cleanUp();
     }
 
     public static void main(String[] args) {

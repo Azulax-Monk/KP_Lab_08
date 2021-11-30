@@ -14,15 +14,14 @@ public class DealerAgency {
 
     public void start() {
         // Create threads
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (var d : dealers) {
+        for (var d : dealers) {
+            ThreadPool.getInstance().executeRunnable(new Runnable() {
+                @Override
+                public void run() {
                     d.run();
                 }
-            }
-        });
-        t1.start();
+            });
+        }
     }
 
     public void initialize(WarehouseController carWarehouseController) {

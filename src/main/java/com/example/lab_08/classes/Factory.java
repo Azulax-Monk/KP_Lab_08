@@ -27,42 +27,39 @@ public class Factory {
 
     public void start() {
         // start all suppliers + warehouses?
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (var supplier: carSuppliers)
+        for (var supplier: carSuppliers)
+            ThreadPool.getInstance().executeRunnable(new Runnable() {
+                @Override
+                public void run() {
                     supplier.run();
-            }
-        });
-        t1.start();
-
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (var supplier: engineSuppliers)
-                    supplier.run();
-            }
-        });
-        t2.start();
-
-        Thread t3 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (var supplier: bodySuppliers)
-                    supplier.run();
-            }
-        });
-        t3.start();
+                }
+            });
 
 
-        Thread t4 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (var supplier: accessorySuppliers)
+        for (var supplier: engineSuppliers)
+            ThreadPool.getInstance().executeRunnable(new Runnable() {
+                @Override
+                public void run() {
                     supplier.run();
-            }
-        });
-        t4.start();
+                }
+            });
+
+        for (var supplier: bodySuppliers)
+            ThreadPool.getInstance().executeRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    supplier.run();
+                }
+            });
+
+
+        for (var supplier: accessorySuppliers)
+            ThreadPool.getInstance().executeRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    supplier.run();
+                }
+            });
     }
 
     private void initialize() {
