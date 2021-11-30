@@ -10,7 +10,7 @@ public final class ThreadPool {
 
     private ThreadPool() {
         var boundedQueue = new ArrayBlockingQueue<Runnable>(50);
-        executorService = new ThreadPoolExecutor(10, 20, 60, TimeUnit.SECONDS,
+        executorService = new ThreadPoolExecutor(20, 20, 60, TimeUnit.SECONDS,
                 boundedQueue, new ThreadPoolExecutor.AbortPolicy());
     }
 
