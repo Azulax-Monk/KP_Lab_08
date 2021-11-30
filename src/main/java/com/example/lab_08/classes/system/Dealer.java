@@ -1,8 +1,7 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.system;
 
-import com.example.lab_08.enums.SupplierState;
-
-import java.util.Random;
+import com.example.lab_08.classes.carParts.Car;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 
 public class Dealer {
     private WarehouseController carWarehouseController;
@@ -18,12 +17,12 @@ public class Dealer {
         car = null;
     }
 
-    public void run() {
+    public void run() throws InterruptedException {
         while (true) {
-            try {
-                Thread.sleep(speedTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            Thread.sleep(speedTime);
+
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Thread interrupted");
             }
 
             takeCar();

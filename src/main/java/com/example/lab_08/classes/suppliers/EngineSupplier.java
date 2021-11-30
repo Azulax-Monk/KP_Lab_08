@@ -1,5 +1,7 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.suppliers;
 
+import com.example.lab_08.classes.carParts.Engine;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ISupplier;
 
@@ -22,12 +24,12 @@ public class EngineSupplier implements ISupplier {
     }
 
     @Override
-    public void run() {
+    public void run() throws InterruptedException {
         while (true) {
-            try {
-                Thread.sleep(speedTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            Thread.sleep(speedTime);
+
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Thread interrupted");
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
@@ -36,11 +38,7 @@ public class EngineSupplier implements ISupplier {
             }
             else {
                 while (this.state.equals(SupplierState.STOPPED)) {
-                    try {
-                        Thread.sleep(waitTime);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Thread.sleep(waitTime);
                 }
             }
         }

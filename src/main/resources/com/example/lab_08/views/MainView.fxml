@@ -22,7 +22,7 @@
 <?import com.example.lab_08.custom_controls.DealerCustomControl?>
 <GridPane alignment="CENTER"
           xmlns:fx="http://javafx.com/fxml"
-          fx:controller="com.example.lab_08.MainController">
+          fx:controller="com.example.lab_08.controllers.MainController">
 
     <rowConstraints>
         <RowConstraints percentHeight="10" />
@@ -77,34 +77,24 @@
 
         <VBox fx:id="supplierGroup" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <DetailSupplierCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="0"
-                    name="Engine supplier"
-                    />
+                    fx:id="s1"
+                    name="Engine supplier"/>
             <DetailSupplierCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="1"
-                    name="Body supplier"
-            />
+                    fx:id="s2"
+                    name="Body supplier"/>
             <DetailSupplierCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="2"
+                    fx:id="s3"
                     name="Accessory supplier"
+                    supplierCount="${controller.factoryInfo.supplierCount}"
             />
         </VBox>
 
         <VBox fx:id="warehouseGroup" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <WarehouseCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="0"
                     name="Engine warehouse"/>
             <WarehouseCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="1"
                     name="Body warehouse"/>
             <WarehouseCustomControl
-                    GridPane.columnIndex="0"
-                    GridPane.rowIndex="2"
                     name="Accessory warehouse"/>
         </VBox>
 

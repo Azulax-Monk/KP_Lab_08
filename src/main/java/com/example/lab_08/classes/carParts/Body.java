@@ -1,4 +1,4 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.carParts;
 
 public class Body extends CarPart {
     private String material;

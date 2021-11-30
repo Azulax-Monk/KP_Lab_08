@@ -1,25 +1,26 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.warehouses;
 
+import com.example.lab_08.classes.carParts.CarPart;
 import com.example.lab_08.enums.WarehouseType;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
 
-public class CarWarehouse implements IWarehouse {
-    private ArrayList<Car> cars;
+public class CarPartWarehouse implements IWarehouse {
+    private ArrayList<CarPart> carParts;
     private int size;
     private WarehouseType warehouseType;
 
-    public CarWarehouse(int maxSize) {
+    public CarPartWarehouse(int maxSize, WarehouseType warehouseType) {
         this.size = maxSize;
-        this.cars = new ArrayList<>();
-        this.warehouseType = WarehouseType.CAR_WAREHOUSE;
+        this.carParts = new ArrayList<>();
+        this.warehouseType = warehouseType;
     }
 
     @Override
     public boolean pushItem(Object item) {
-        if (item.getClass().equals(Car.class) && !isFull()) {
-            cars.add((Car) item);
+        if (CarPart.class.isAssignableFrom(item.getClass()) && !isFull()) {
+            carParts.add((CarPart) item);
             return true;
         }
         else {
@@ -28,9 +29,9 @@ public class CarWarehouse implements IWarehouse {
     }
 
     @Override
-    public Car popItem() {
+    public CarPart popItem() {
         if (!isEmpty()) {
-            return cars.remove(cars.size() - 1);
+            return carParts.remove(carParts.size() - 1);
         }
         else {
             return null;
@@ -44,7 +45,7 @@ public class CarWarehouse implements IWarehouse {
 
     @Override
     public boolean isEmpty() {
-        if (cars.size() == 0) {
+        if (carParts.size() == 0) {
             return true;
         }
         else {
@@ -54,7 +55,7 @@ public class CarWarehouse implements IWarehouse {
 
     @Override
     public boolean isFull() {
-        if (cars.size() == size) {
+        if (carParts.size() == size) {
             return true;
         }
         else {

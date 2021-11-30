@@ -1,5 +1,6 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.suppliers;
 
+import com.example.lab_08.classes.carParts.Engine;
 import com.example.lab_08.interfaces.IConstructor;
 
 public class EngineConstructor implements IConstructor {

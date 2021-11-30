@@ -1,4 +1,4 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.warehouses;
 
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ISupplier;
@@ -22,7 +22,7 @@ public class WarehouseController {
         return assignedWarehouse;
     }
 
-    public boolean pushItem(Object item) {
+    public synchronized boolean pushItem(Object item) {
         if (!assignedWarehouse.isFull()) {
             assignedWarehouse.pushItem(item);
             return true;
@@ -33,7 +33,7 @@ public class WarehouseController {
         }
     }
 
-    public Object popItem() {
+    public synchronized Object popItem() {
         notifySuppliers(SupplierState.WORKING);
 
         if (!assignedWarehouse.isEmpty()) {

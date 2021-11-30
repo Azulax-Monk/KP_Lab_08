@@ -1,4 +1,4 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.system;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

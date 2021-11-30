@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 
 import com.example.lab_08.MainApplication;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import com.example.lab_08.models.FactoryInfoModel;
+import javafx.beans.property.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -18,10 +16,11 @@ public class DetailSupplierCustomControl extends VBox {
     @FXML private Label nameField;
     @FXML private Label stateField;
     @FXML private Label itemsCountField;
+    @FXML private Label supplierCountField;
     @FXML private StringProperty name = new SimpleStringProperty("");
     @FXML private StringProperty state = new SimpleStringProperty("");
-    @FXML private IntegerProperty createdDetailsCount = new SimpleIntegerProperty(0);
-    @FXML private IntegerProperty supplierCount = new SimpleIntegerProperty(0);
+    @FXML private StringProperty createdDetailsCount = new SimpleStringProperty("");
+    @FXML private StringProperty supplierCount = new SimpleStringProperty("");
 
     public DetailSupplierCustomControl() {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("views/DetailSupplierView.fxml"));
@@ -33,11 +32,21 @@ public class DetailSupplierCustomControl extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        bindProperties();
+    }
+
+    private void bindProperties() {
+        nameField.textProperty().bind(name);
+        supplierCountField.textProperty().bind(supplierCount);
+        //supplierCountField.textProperty().set(getSupplierCount());
+        itemsCountField.textProperty().bind(createdDetailsCount);
+        stateField.textProperty().bind(state);
     }
 
     // Getters and setters region
     public String getState() {
-        return state.get();
+        return "State: " + state.get();
     }
 
     public StringProperty stateProperty() {
@@ -46,37 +55,34 @@ public class DetailSupplierCustomControl extends VBox {
 
     public void setState(String state) {
         this.state.set(state);
-        stateField.textProperty().set("State: " + state);
     }
 
-    public int getCreatedDetailsCount() {
-        return createdDetailsCount.get();
+    public String getCreatedDetailsCount() {
+        return "Items created: " + createdDetailsCount.get();
     }
 
-    public IntegerProperty createdDetailsCountProperty() {
+    public StringProperty createdDetailsCountProperty() {
         return createdDetailsCount;
     }
 
-    public void setCreatedDetailsCount(int createdDetailsCount) {
+    public void setCreatedDetailsCount(String createdDetailsCount) {
         this.createdDetailsCount.set(createdDetailsCount);
-        itemsCountField.textProperty().set("Items created: " + getCreatedDetailsCount());
     }
 
-    public int getSupplierCount() {
+    public String getSupplierCount() {
         return supplierCount.get();
     }
 
-    public IntegerProperty supplierCountProperty() {
+    public StringProperty supplierCountProperty() {
         return supplierCount;
     }
 
-    public void setSupplierCount(int supplierCount) {
+    public void setSupplierCount(String supplierCount) {
         this.supplierCount.set(supplierCount);
-        nameField.textProperty().set(getName());
     }
 
     public String getName() {
-        return name.get() + " <" + getSupplierCount() + ">";
+        return name.get();
     }
 
     public StringProperty nameProperty() {
@@ -84,7 +90,6 @@ public class DetailSupplierCustomControl extends VBox {
     }
 
     public void setName(String name) {
-        this.name.set(name);
-        nameField.textProperty().set(getName());
+        this.name.set(name + ": ");
     }
 }

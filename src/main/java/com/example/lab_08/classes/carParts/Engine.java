@@ -1,4 +1,6 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.carParts;
+
+import com.example.lab_08.classes.carParts.CarPart;
 
 public class Engine extends CarPart {
     private int power;

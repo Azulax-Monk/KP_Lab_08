@@ -1,4 +1,7 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.system;
+
+import com.example.lab_08.classes.threads.ThreadPool;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 
 import java.util.ArrayList;
 
@@ -18,7 +21,11 @@ public class DealerAgency {
             ThreadPool.getInstance().executeRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    d.run();
+                    try {
+                        d.run();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
@@ -28,6 +35,10 @@ public class DealerAgency {
         for (int i = 0; i < settings.getDealerCount(); i++) {
             dealers.add(new Dealer(carWarehouseController));
         }
+    }
+
+    public ArrayList<Dealer> getDealers() {
+        return dealers;
     }
 
 }

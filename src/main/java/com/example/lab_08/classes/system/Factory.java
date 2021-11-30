@@ -1,11 +1,18 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.system;
 
+import com.example.lab_08.classes.threads.ThreadPool;
+import com.example.lab_08.classes.suppliers.AccessorySupplier;
+import com.example.lab_08.classes.suppliers.BodySupplier;
+import com.example.lab_08.classes.suppliers.CarSupplier;
+import com.example.lab_08.classes.suppliers.EngineSupplier;
+import com.example.lab_08.classes.warehouses.CarPartWarehouse;
+import com.example.lab_08.classes.warehouses.CarWarehouse;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.WarehouseType;
 import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class Factory {
     private ArrayList<CarSupplier> carSuppliers;
@@ -27,37 +34,22 @@ public class Factory {
 
     public void start() {
         // start all suppliers + warehouses?
-        for (var supplier: carSuppliers)
+        startThreads(carSuppliers);
+        startThreads(engineSuppliers);
+        startThreads(bodySuppliers);
+        startThreads(accessorySuppliers);
+    }
+
+    private void startThreads(ArrayList<? extends ISupplier> suppliers) {
+        for (var supplier: suppliers)
             ThreadPool.getInstance().executeRunnable(new Runnable() {
                 @Override
                 public void run() {
-                    supplier.run();
-                }
-            });
-
-
-        for (var supplier: engineSuppliers)
-            ThreadPool.getInstance().executeRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    supplier.run();
-                }
-            });
-
-        for (var supplier: bodySuppliers)
-            ThreadPool.getInstance().executeRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    supplier.run();
-                }
-            });
-
-
-        for (var supplier: accessorySuppliers)
-            ThreadPool.getInstance().executeRunnable(new Runnable() {
-                @Override
-                public void run() {
-                    supplier.run();
+                    try {
+                        supplier.run();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
     }
@@ -103,16 +95,6 @@ public class Factory {
         warehouseControllers.get(1).setSuppliers(engineSuppliers);
         warehouseControllers.get(2).setSuppliers(bodySuppliers);
         warehouseControllers.get(3).setSuppliers(accessorySuppliers);
-
-/*
-        for (var carSupplier: carSuppliers)
-            warehouseControllers.get(0).setSuppliers(carSupplier);
-        for (var carSupplier: engineSuppliers)
-            warehouseControllers.get(1).setSuppliers(engineSuppliers);
-        for (var carSupplier: carSuppliers)
-            warehouseControllers.get(2).setSuppliers(bodySuppliers);
-        for (var carSupplier: carSuppliers)
-            warehouseControllers.get(3).setSuppliers(accessorySuppliers);*/
     }
 
     public IWarehouse getWarehouse(WarehouseType type) {
@@ -123,5 +105,46 @@ public class Factory {
     public WarehouseController getWarehouseController(WarehouseType type) {
         return warehouseControllers.stream().filter(controller -> controller.getWarehouse().getType() ==
                 type).findFirst().get();
+    }
+
+    // Getters and Setters region
+    public ArrayList<CarSupplier> getCarSuppliers() {
+        return carSuppliers;
+    }
+
+    public void setCarSuppliers(ArrayList<CarSupplier> carSuppliers) {
+        this.carSuppliers = carSuppliers;
+    }
+
+    public ArrayList<EngineSupplier> getEngineSuppliers() {
+        return engineSuppliers;
+    }
+
+    public void setEngineSuppliers(ArrayList<EngineSupplier> engineSuppliers) {
+        this.engineSuppliers = engineSuppliers;
+    }
+
+    public ArrayList<BodySupplier> getBodySuppliers() {
+        return bodySuppliers;
+    }
+
+    public void setBodySuppliers(ArrayList<BodySupplier> bodySuppliers) {
+        this.bodySuppliers = bodySuppliers;
+    }
+
+    public ArrayList<AccessorySupplier> getAccessorySuppliers() {
+        return accessorySuppliers;
+    }
+
+    public void setAccessorySuppliers(ArrayList<AccessorySupplier> accessorySuppliers) {
+        this.accessorySuppliers = accessorySuppliers;
+    }
+
+    public ArrayList<WarehouseController> getWarehouseControllers() {
+        return warehouseControllers;
+    }
+
+    public void setWarehouseControllers(ArrayList<WarehouseController> warehouseControllers) {
+        this.warehouseControllers = warehouseControllers;
     }
 }

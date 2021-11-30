@@ -1,6 +1,6 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.carParts;
 
-public class Accessory extends CarPart{
+public class Accessory extends CarPart {
     private String type;
 
     public Accessory(String type) {

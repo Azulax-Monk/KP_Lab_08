@@ -1,4 +1,4 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.carParts;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

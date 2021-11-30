@@ -1,5 +1,8 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.suppliers;
 
+import com.example.lab_08.classes.carParts.Car;
+import com.example.lab_08.classes.warehouses.CarConstructor;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ICarBuilder;
 import com.example.lab_08.interfaces.ISupplier;
@@ -10,6 +13,7 @@ public class CarSupplier implements ISupplier {
     private ICarBuilder carConstructor;
     private SupplierState state;
     private long speedTime;
+    private int carsCount;
     private final long waitTime = 100;
 
     public CarSupplier(WarehouseController carWC, WarehouseController engineWC,
@@ -18,6 +22,7 @@ public class CarSupplier implements ISupplier {
         this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
         this.state = SupplierState.STOPPED;
         speedTime = 5000;
+        carsCount = 0;
     }
 
     @Override
@@ -26,12 +31,12 @@ public class CarSupplier implements ISupplier {
     }
 
     @Override
-    public void run() {
+    public void run() throws InterruptedException {
         while (true) {
-            try {
-                Thread.sleep(speedTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            Thread.sleep(speedTime);
+
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Thread interrupted");
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
@@ -40,11 +45,7 @@ public class CarSupplier implements ISupplier {
             }
             else {
                 while (this.state.equals(SupplierState.STOPPED)) {
-                    try {
-                        Thread.sleep(waitTime);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Thread.sleep(waitTime);
                 }
             }
         }

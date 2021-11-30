@@ -1,16 +1,18 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.suppliers;
 
+import com.example.lab_08.classes.carParts.Accessory;
+import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ISupplier;
 
-public class BodySupplier implements ISupplier {
-    private Body bodyToSupply;
+public class AccessorySupplier implements ISupplier {
+    private Accessory accessoryToSupply;
     private WarehouseController warehouseController;
     private SupplierState state;
     private long speedTime;
     private final long waitTime = 100;
 
-    public BodySupplier(WarehouseController warehouseController) {
+    public AccessorySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
         speedTime = 5000;
         state = SupplierState.WORKING;
@@ -22,41 +24,37 @@ public class BodySupplier implements ISupplier {
     }
 
     @Override
-    public void run() {
+    public void run() throws InterruptedException {
         while (true) {
-            try {
-                Thread.sleep(speedTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            Thread.sleep(speedTime);
+
+            if (Thread.currentThread().isInterrupted()) {
+                throw new InterruptedException("Thread interrupted");
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
-                bodyToSupply = orderToConstruct();
+                accessoryToSupply = orderToConstruct();
                 store();
             }
             else {
                 while (this.state.equals(SupplierState.STOPPED)) {
-                    try {
-                        Thread.sleep(waitTime);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    Thread.sleep(waitTime);
                 }
             }
         }
     }
 
     @Override
-    public Body orderToConstruct() {
-        System.out.println("Begin constructing body");
-        return new BodyConstructor().construct();
+    public Accessory orderToConstruct() {
+        System.out.println("Begin constructing accessory");
+        return new AccessoryConstructor().construct();
     }
 
     @Override
     public boolean store() {
-        if (warehouseController.pushItem(bodyToSupply)) {
-            bodyToSupply = null;
-            System.out.println("Stored body");
+        if (warehouseController.pushItem(accessoryToSupply)) {
+            accessoryToSupply = null;
+            System.out.println("Stored accessory");
             return true;
         }
         else {

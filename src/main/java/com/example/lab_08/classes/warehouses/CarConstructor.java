@@ -1,5 +1,9 @@
-package com.example.lab_08.classes;
+package com.example.lab_08.classes.warehouses;
 
+import com.example.lab_08.classes.carParts.Accessory;
+import com.example.lab_08.classes.carParts.Body;
+import com.example.lab_08.classes.carParts.Car;
+import com.example.lab_08.classes.carParts.Engine;
 import com.example.lab_08.interfaces.ICarBuilder;
 
 public class CarConstructor implements ICarBuilder {

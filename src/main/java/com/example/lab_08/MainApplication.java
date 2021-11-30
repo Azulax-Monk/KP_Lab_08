@@ -1,14 +1,12 @@
 package com.example.lab_08;
 
-import com.example.lab_08.classes.Settings;
-import com.example.lab_08.classes.ThreadPool;
+import com.example.lab_08.classes.threads.ThreadPool;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class MainApplication extends Application {
     @Override
