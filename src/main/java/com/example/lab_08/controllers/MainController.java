@@ -37,7 +37,7 @@ public class MainController {
 
     private void bindCustomControls() {
         s1.supplierCountProperty().bind(factoryInfo.get().supplierCountProperty().asString("<" + factoryInfo.get().getSupplierCount() + ">"));
-        //s1.createdDetailsCountProperty().bind(factoryInfo.get());
+        s1.createdDetailsCountProperty().bind(factoryInfo.get().getEngineWarehouse().createdItemsCountProperty().asString());
         s1.stateProperty().bind(factoryInfo.get().getEngineSuppliers().stateProperty());
         int a = 0;
     }

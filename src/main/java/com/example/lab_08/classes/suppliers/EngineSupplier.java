@@ -14,7 +14,7 @@ public class EngineSupplier implements ISupplier {
 
     public EngineSupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;
+        speedTime = 5000;       // to be upd
         state = SupplierState.WORKING;
     }
 

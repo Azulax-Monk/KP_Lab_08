@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class WarehouseController {
     private IWarehouse assignedWarehouse;
+    private long itemsProduced = 0;
     private ArrayList<? extends ISupplier> supplierList;
 
     public WarehouseController(IWarehouse assignedWarehouse) {
@@ -25,6 +26,7 @@ public class WarehouseController {
     public synchronized boolean pushItem(Object item) {
         if (!assignedWarehouse.isFull()) {
             assignedWarehouse.pushItem(item);
+            itemsProduced++;
             return true;
         }
         else {
@@ -48,5 +50,9 @@ public class WarehouseController {
         for (var s : supplierList) {
             s.setState(state);
         }
+    }
+
+    public long getItemsProduced() {
+        return itemsProduced;
     }
 }

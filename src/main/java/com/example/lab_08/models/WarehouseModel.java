@@ -31,7 +31,7 @@ public class WarehouseModel {
     }
 
     public int getCreatedItemsCount() {
-        return createdItemsCount.get();
+        return (int) warehouse.getItemsProduced();
     }
 
     public IntegerProperty createdItemsCountProperty() {
