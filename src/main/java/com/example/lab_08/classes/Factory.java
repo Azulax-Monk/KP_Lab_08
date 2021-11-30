@@ -26,7 +26,7 @@ public class Factory {
     }
 
     public void start() {
-        // start all suppliers + warehouses?
+        // start all suppliers
         for (var supplier: carSuppliers)
             ThreadPool.getInstance().executeRunnable(new Runnable() {
                 @Override

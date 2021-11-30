@@ -17,7 +17,7 @@ public class CarSupplier implements ISupplier {
         this.carWarehouseController = carWC;
         this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
         this.state = SupplierState.STOPPED;
-        speedTime = 5000;
+        speedTime = 5000;       // to be upd
     }
 
     @Override

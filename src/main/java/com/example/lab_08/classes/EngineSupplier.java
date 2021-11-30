@@ -12,7 +12,7 @@ public class EngineSupplier implements ISupplier {
 
     public EngineSupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;
+        speedTime = 5000;       // to be upd
         state = SupplierState.WORKING;
     }
 
@@ -24,6 +24,7 @@ public class EngineSupplier implements ISupplier {
     @Override
     public void run() {
         while (true) {
+            System.out.println("Engine's state now is " + this.state);
             try {
                 Thread.sleep(speedTime);
             } catch (InterruptedException e) {

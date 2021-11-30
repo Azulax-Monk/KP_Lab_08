@@ -12,7 +12,7 @@ public class BodySupplier implements ISupplier {
 
     public BodySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;
+        speedTime = 5000;       // to be upd
         state = SupplierState.WORKING;
     }
 

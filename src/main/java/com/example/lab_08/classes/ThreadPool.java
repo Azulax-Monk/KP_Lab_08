@@ -26,11 +26,7 @@ public final class ThreadPool {
     }
 
     public void cleanUp() {
-        executorService.shutdown();
-        try {
-            executorService.awaitTermination(MAX_PRIORITY, TimeUnit.HOURS);
-        } catch (InterruptedException e) {
-            System.out.println("Exception while waiting for thread pool to close");
-        }
+        executorService.shutdownNow();
+
     }
 }
