@@ -85,16 +85,18 @@
             <DetailSupplierCustomControl
                     fx:id="s3"
                     name="Accessory supplier"
-                    supplierCount="${controller.factoryInfo.supplierCount}"
             />
         </VBox>
 
         <VBox fx:id="warehouseGroup" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <WarehouseCustomControl
+                    fx:id="w1"
                     name="Engine warehouse"/>
             <WarehouseCustomControl
+                    fx:id="w2"
                     name="Body warehouse"/>
             <WarehouseCustomControl
+                    fx:id="w3"
                     name="Accessory warehouse"/>
         </VBox>
 
@@ -109,6 +111,7 @@
             </columnConstraints>
 
             <CarSupplierCustomControl
+                    fx:id="s4"
                     GridPane.columnIndex="0"
                     GridPane.rowIndex="1"
                     name="Car supplier"
@@ -126,6 +129,7 @@
             </columnConstraints>
 
             <WarehouseCustomControl
+                    fx:id="w4"
                     GridPane.columnIndex="0"
                     GridPane.rowIndex="1"
                     name="Car warehouse"/>
@@ -142,6 +146,7 @@
             </columnConstraints>
 
             <DealerCustomControl
+                    fx:id="d1"
                     GridPane.columnIndex="0"
                     GridPane.rowIndex="1"
                     name="Dealer"/>

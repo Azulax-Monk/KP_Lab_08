@@ -1,6 +1,8 @@
 package com.example.lab_08.classes.warehouses;
 
 import com.example.lab_08.classes.carParts.CarPart;
+import com.example.lab_08.classes.events.EventPool;
+import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.enums.WarehouseType;
 import com.example.lab_08.interfaces.IWarehouse;
 
@@ -10,6 +12,7 @@ public class CarPartWarehouse implements IWarehouse {
     private ArrayList<CarPart> carParts;
     private int size;
     private WarehouseType warehouseType;
+    private EventPool eventPool;
 
     public CarPartWarehouse(int maxSize, WarehouseType warehouseType) {
         this.size = maxSize;
@@ -66,5 +69,20 @@ public class CarPartWarehouse implements IWarehouse {
     @Override
     public WarehouseType getType() {
         return warehouseType;
+    }
+
+    @Override
+    public void setEventPool(EventPool ep) {
+        this.eventPool = ep;
+    }
+
+    @Override
+    public EventPool getEventPool() {
+        return this.eventPool;
+    }
+
+    @Override
+    public void notify(EventPool ep, EventType type) {
+        IWarehouse.super.notify(ep, type);
     }
 }

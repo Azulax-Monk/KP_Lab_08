@@ -1,5 +1,6 @@
 package com.example.lab_08.models;
 
+import com.example.lab_08.classes.events.EventPool;
 import com.example.lab_08.classes.warehouses.WarehouseController;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -11,10 +12,12 @@ public class WarehouseModel {
     @FXML private IntegerProperty storedItemsCount = new SimpleIntegerProperty(0);
     @FXML private IntegerProperty createdItemsCount = new SimpleIntegerProperty(0);
     @FXML private StringProperty state = new SimpleStringProperty("");
-    private WarehouseController warehouse;
+    private WarehouseController warehouseController;
+    private EventPool eventPool;
 
     public WarehouseModel(WarehouseController warehouse) {
-        this.warehouse = warehouse;
+        this.warehouseController = warehouse;
+        this.warehouseController.setEventPool(eventPool);
     }
 
     // Getters and setters region
@@ -31,7 +34,7 @@ public class WarehouseModel {
     }
 
     public int getCreatedItemsCount() {
-        return (int) warehouse.getItemsProduced();
+        return (int) warehouseController.getItemsProduced();
     }
 
     public IntegerProperty createdItemsCountProperty() {

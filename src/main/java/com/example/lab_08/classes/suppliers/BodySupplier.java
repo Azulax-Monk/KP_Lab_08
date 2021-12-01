@@ -1,8 +1,11 @@
 package com.example.lab_08.classes.suppliers;
 
 import com.example.lab_08.classes.carParts.Body;
+import com.example.lab_08.classes.events.EventPool;
+import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
+import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
 
 public class BodySupplier implements ISupplier {
@@ -11,6 +14,7 @@ public class BodySupplier implements ISupplier {
     private SupplierState state;
     private long speedTime;
     private final long waitTime = 100;
+    private EventPool eventPool;
 
     public BodySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
@@ -21,6 +25,11 @@ public class BodySupplier implements ISupplier {
     @Override
     public void setState(SupplierState state) {
         this.state = state;
+    }
+
+    @Override
+    public SupplierState getState() {
+        return this.state;
     }
 
     @Override
@@ -70,5 +79,20 @@ public class BodySupplier implements ISupplier {
 
     public void setSpeedTime(long speedTime) {
         this.speedTime = speedTime;
+    }
+
+    @Override
+    public void setEventPool(EventPool ep) {
+        this.eventPool = ep;
+    }
+
+    @Override
+    public EventPool getEventPool() {
+        return this.eventPool;
+    }
+
+    @Override
+    public void notify(EventPool ep, EventType type) {
+        ISupplier.super.notify(ep, type);
     }
 }

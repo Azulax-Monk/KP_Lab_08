@@ -1,7 +1,8 @@
 package com.example.lab_08.classes.suppliers;
 
 import com.example.lab_08.classes.carParts.Car;
-import com.example.lab_08.classes.warehouses.CarConstructor;
+import com.example.lab_08.classes.events.EventPool;
+import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ICarBuilder;
@@ -15,11 +16,12 @@ public class CarSupplier implements ISupplier {
     private long speedTime;
     private int carsCount;
     private final long waitTime = 100;
+    private EventPool eventPool;
 
     public CarSupplier(WarehouseController carWC, WarehouseController engineWC,
                        WarehouseController bodyWC, WarehouseController accessoryWC) {
         this.carWarehouseController = carWC;
-        this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
+        this.carConstructor = new EngineConstructor.CarConstructor(engineWC, bodyWC, accessoryWC);
         this.state = SupplierState.STOPPED;
         speedTime = 5000;       // to be upd
         carsCount = 0;
@@ -28,6 +30,11 @@ public class CarSupplier implements ISupplier {
     @Override
     public void setState(SupplierState state) {
         this.state = state;
+    }
+
+    @Override
+    public SupplierState getState() {
+        return this.state;
     }
 
     @Override
@@ -78,4 +85,21 @@ public class CarSupplier implements ISupplier {
     public void setSpeedTime(long speedTime) {
         this.speedTime = speedTime;
     }
+
+    @Override
+    public void setEventPool(EventPool ep) {
+        this.eventPool = ep;
+    }
+
+    @Override
+    public EventPool getEventPool() {
+        return this.eventPool;
+    }
+
+    @Override
+    public void notify(EventPool ep, EventType type) {
+        ISupplier.super.notify(ep, type);
+    }
+
+
 }

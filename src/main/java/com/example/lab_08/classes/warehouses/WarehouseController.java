@@ -1,15 +1,19 @@
 package com.example.lab_08.classes.warehouses;
 
+import com.example.lab_08.classes.events.EventPool;
+import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.enums.SupplierState;
+import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
 
-public class WarehouseController {
+public class WarehouseController implements INotifier {
     private IWarehouse assignedWarehouse;
     private long itemsProduced = 0;
     private ArrayList<? extends ISupplier> supplierList;
+    private EventPool eventPool;
 
     public WarehouseController(IWarehouse assignedWarehouse) {
         this.assignedWarehouse = assignedWarehouse;
@@ -54,5 +58,20 @@ public class WarehouseController {
 
     public long getItemsProduced() {
         return itemsProduced;
+    }
+
+    @Override
+    public void setEventPool(EventPool ep) {
+        this.eventPool = ep;
+    }
+
+    @Override
+    public EventPool getEventPool() {
+        return this.eventPool;
+    }
+
+    @Override
+    public void notify(EventPool ep, EventType type) {
+        INotifier.super.notify(ep, type);
     }
 }
