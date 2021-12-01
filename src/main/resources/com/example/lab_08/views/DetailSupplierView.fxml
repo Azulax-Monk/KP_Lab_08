@@ -16,7 +16,7 @@
     </HBox>
     <HBox>
         <Label text="Items created: " styleClass="item"/>
-        <Label fx:id="itemsCountField" text="-" styleClass="item"/>
+        <Label fx:id="createdItemsField" text="-" styleClass="item"/>
     </HBox>
     <HBox>
         <Label text="State: " styleClass="item"/>

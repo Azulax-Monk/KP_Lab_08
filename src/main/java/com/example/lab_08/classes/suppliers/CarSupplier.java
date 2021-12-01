@@ -30,6 +30,7 @@ public class CarSupplier implements ISupplier {
     @Override
     public void setState(SupplierState state) {
         this.state = state;
+        eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
     }
 
     @Override
@@ -66,6 +67,7 @@ public class CarSupplier implements ISupplier {
 
     @Override
     public boolean store() {
+        eventPool.getEvent(EventType.ITEM_CREATED).invoke();
         if (carWarehouseController.pushItem(carToSupply)) {
             carToSupply = null;
             System.out.println("Stored car");

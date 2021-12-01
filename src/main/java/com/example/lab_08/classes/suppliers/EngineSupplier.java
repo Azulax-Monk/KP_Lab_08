@@ -25,6 +25,7 @@ public class EngineSupplier implements ISupplier {
     @Override
     public void setState(SupplierState state) {
         this.state = state;
+        eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
     }
 
     @Override
@@ -61,6 +62,7 @@ public class EngineSupplier implements ISupplier {
 
     @Override
     public boolean store() {
+        eventPool.getEvent(EventType.ITEM_CREATED).invoke();
         if (warehouseController.pushItem(engineToSupply)) {
             engineToSupply = null;
             System.out.println("Stored engine");

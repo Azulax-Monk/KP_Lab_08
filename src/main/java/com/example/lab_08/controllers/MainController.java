@@ -38,12 +38,12 @@ public class MainController {
     }
 
     private void bindCustomControls() {
-        int a = 0;
+        bindSuppliersCustomControls();
     }
 
     private void bindSuppliersCustomControls() {
-        s1.supplierCountProperty().bind(factoryInfo.get().supplierCountProperty().asString("<" + factoryInfo.get().getSupplierCount() + ">"));
-        s1.createdDetailsCountProperty().bind(factoryInfo.get().getEngineWarehouse().createdItemsCountProperty().asString());
+        s1.supplierCountProperty().bind(factoryInfo.get().engineSuppliersProperty().get().supplierCountProperty().asString()); //.supplierCountProperty().asString()
+        s1.createdItemsCountProperty().bind(factoryInfo.get().getEngineWarehouse().createdItemsCountProperty().asString());
         s1.stateProperty().bind(factoryInfo.get().getEngineSuppliers().stateProperty());
     }
 

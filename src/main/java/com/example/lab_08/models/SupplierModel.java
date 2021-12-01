@@ -4,6 +4,7 @@ import com.example.lab_08.classes.events.Event;
 import com.example.lab_08.classes.events.EventPool;
 import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.interfaces.ISupplier;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,7 +25,7 @@ public class SupplierModel {
         setSupplierCount(this.suppliers.size());
 
         eventPool = new EventPool();
-//        eventPool.addEvent(new Event(EventType.ENTITY_COUNT_CHANGED));
+        //eventPool.addEvent(new Event(EventType.ENTITY_COUNT_CHANGED));
         eventPool.addEvent(new Event(EventType.ENTITY_STATE_CHANGED));
         eventPool.addEvent(new Event(EventType.ITEM_CREATED));
         for (var s : suppliers) {
@@ -53,7 +54,11 @@ public class SupplierModel {
     }
 
     public void setState(String state) {
-        this.state.set(state);
+        Platform.runLater(
+                () -> {
+                    this.state.set(state);
+                }
+        );
     }
 
     public int getSupplierCount() {
@@ -78,6 +83,11 @@ public class SupplierModel {
     }
 
     public void setItemsCreatedCount(int itemsCreatedCount) {
-        this.itemsCreatedCount.set(itemsCreatedCount);
+        // Updates UI in separate thread
+        Platform.runLater(
+                () -> {
+                    this.itemsCreatedCount.set(itemsCreatedCount);
+                }
+        );
     }
 }

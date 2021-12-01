@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 public class DetailSupplierCustomControl extends VBox {
     @FXML private Label nameField;
     @FXML private Label stateField;
-    @FXML private Label itemsCountField;
+    @FXML private Label createdItemsField;
     @FXML private Label supplierCountField;
     @FXML private StringProperty name = new SimpleStringProperty("");
     @FXML private StringProperty state = new SimpleStringProperty("");
-    @FXML private StringProperty createdDetailsCount = new SimpleStringProperty("");
+    @FXML private StringProperty createdItemsCount = new SimpleStringProperty("");
     @FXML private StringProperty supplierCount = new SimpleStringProperty("");
 
     public DetailSupplierCustomControl() {
@@ -40,11 +40,24 @@ public class DetailSupplierCustomControl extends VBox {
         nameField.textProperty().bind(name);
         supplierCountField.textProperty().bind(supplierCount);
         //supplierCountField.textProperty().set(getSupplierCount());
-        itemsCountField.textProperty().bind(createdDetailsCount);
+        createdItemsField.textProperty().bind(createdItemsCount);
         stateField.textProperty().bind(state);
     }
 
     // Getters and setters region
+
+    public String getCreatedItemsCount() {
+        return "Items count: " + createdItemsCount.get();
+    }
+
+    public StringProperty createdItemsCountProperty() {
+        return createdItemsCount;
+    }
+
+    public void setCreatedItemsCount(String createdItemsCount) {
+        this.createdItemsCount.set(createdItemsCount);
+    }
+
     public String getState() {
         return "State: " + state.get();
     }
@@ -57,17 +70,6 @@ public class DetailSupplierCustomControl extends VBox {
         this.state.set(state);
     }
 
-    public String getCreatedDetailsCount() {
-        return "Items created: " + createdDetailsCount.get();
-    }
-
-    public StringProperty createdDetailsCountProperty() {
-        return createdDetailsCount;
-    }
-
-    public void setCreatedDetailsCount(String createdDetailsCount) {
-        this.createdDetailsCount.set(createdDetailsCount);
-    }
 
     public String getSupplierCount() {
         return supplierCount.get();
