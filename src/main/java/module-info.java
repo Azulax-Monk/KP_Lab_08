@@ -4,6 +4,7 @@ module com.example.lab_08 {
     requires javafx.graphics;
     //requires gson;
     requires com.google.gson;
+    requires java.logging;
 
 
     opens com.example.lab_08 to javafx.fxml;
