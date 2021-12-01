@@ -7,8 +7,10 @@ import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
+import java.util.logging.Logger;
 
 public class AccessorySupplier implements ISupplier {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Accessory accessoryToSupply;
     private WarehouseController warehouseController;
     private SupplierState state;
@@ -39,6 +41,7 @@ public class AccessorySupplier implements ISupplier {
             Thread.sleep(speedTime);
 
             if (Thread.currentThread().isInterrupted()) {
+                LOGGER.warning("Thread " + Thread.currentThread().getName() + ": Thread interrupted");
                 throw new InterruptedException("Thread interrupted");
             }
 
@@ -56,7 +59,7 @@ public class AccessorySupplier implements ISupplier {
 
     @Override
     public Accessory orderToConstruct() {
-        System.out.println("Begin constructing accessory");
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing accessory");
         return new AccessoryConstructor().construct();
     }
 
@@ -65,12 +68,12 @@ public class AccessorySupplier implements ISupplier {
         eventPool.getEvent(EventType.ITEM_CREATED).invoke();
         if (warehouseController.pushItem(accessoryToSupply)) {
             accessoryToSupply = null;
-            System.out.println("Stored accessory");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Stored accessory");
             return true;
         }
         else {
             this.state = SupplierState.STOPPED;
-            System.out.println("Failed to store accessory");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Failed to store accessory");
             return false;
         }
     }

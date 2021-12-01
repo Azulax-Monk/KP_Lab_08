@@ -7,8 +7,10 @@ import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
+import java.util.logging.Logger;
 
 public class EngineSupplier implements ISupplier {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Engine engineToSupply;
     private WarehouseController warehouseController;
     private SupplierState state;
@@ -39,6 +41,7 @@ public class EngineSupplier implements ISupplier {
             Thread.sleep(speedTime);
 
             if (Thread.currentThread().isInterrupted()) {
+                LOGGER.warning("Thread " + Thread.currentThread().getName() + ": Thread interrupted");
                 throw new InterruptedException("Thread interrupted");
             }
 
@@ -56,7 +59,7 @@ public class EngineSupplier implements ISupplier {
 
     @Override
     public Engine orderToConstruct() {
-        System.out.println("Begin constructing engine");
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing engine");
         return new EngineConstructor().construct();
     }
 
@@ -65,12 +68,12 @@ public class EngineSupplier implements ISupplier {
         eventPool.getEvent(EventType.ITEM_CREATED).invoke();
         if (warehouseController.pushItem(engineToSupply)) {
             engineToSupply = null;
-            System.out.println("Stored engine");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Stored engine");
             return true;
         }
         else {
             this.state = SupplierState.STOPPED;
-            System.out.println("Failed to store engine");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Failed to store engine");
             return false;
         }
     }
