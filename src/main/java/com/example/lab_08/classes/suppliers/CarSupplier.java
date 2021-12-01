@@ -23,7 +23,7 @@ public class CarSupplier implements ISupplier {
     public CarSupplier(WarehouseController carWC, WarehouseController engineWC,
                        WarehouseController bodyWC, WarehouseController accessoryWC) {
         this.carWarehouseController = carWC;
-        this.carConstructor = new EngineConstructor.CarConstructor(engineWC, bodyWC, accessoryWC);
+        this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
         this.state = SupplierState.STOPPED;
         speedTime = 5000;       // to be upd
         carsCount = 0;

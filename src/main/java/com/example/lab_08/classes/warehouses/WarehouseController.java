@@ -42,7 +42,9 @@ public class WarehouseController implements INotifier {
     }
 
     public synchronized Object popItem() {
-        notifySuppliers(SupplierState.WORKING);
+
+        if (supplierList.get(0).getState() != SupplierState.WORKING)
+            notifySuppliers(SupplierState.WORKING);
 
         if (!assignedWarehouse.isEmpty()) {
             return assignedWarehouse.popItem();

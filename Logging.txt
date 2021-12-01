@@ -1,96 +1,112 @@
-Dec 02, 2021 12:29:30 AM com.example.lab_08.classes.system.Program initialize
+дек. 02, 2021 1:02:53 AM com.example.lab_08.classes.system.Program initialize
 INFO: Thread JavaFX Application Thread: Program initialization
-Dec 02, 2021 12:29:30 AM com.example.lab_08.classes.system.Program start
+дек. 02, 2021 1:02:53 AM com.example.lab_08.classes.system.Program start
 INFO: Thread JavaFX Application Thread: Program starting
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
-INFO: Thread pool-2-thread-8: Begin constructing accessory
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
-INFO: Thread pool-2-thread-7: Begin constructing accessory
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
-INFO: Thread pool-2-thread-6: Begin constructing body
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
-INFO: Thread pool-2-thread-4: Begin constructing engine
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
-INFO: Thread pool-2-thread-5: Begin constructing body
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
-INFO: Thread pool-2-thread-3: Begin constructing engine
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.EngineSupplier store
-INFO: Thread pool-2-thread-3: Stored engine
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
-INFO: Thread pool-2-thread-7: Stored accessory
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.BodySupplier store
-INFO: Thread pool-2-thread-6: Stored body
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
-INFO: Thread pool-2-thread-8: Stored accessory
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.EngineSupplier store
-INFO: Thread pool-2-thread-4: Stored engine
-Dec 02, 2021 12:29:35 AM com.example.lab_08.classes.suppliers.BodySupplier store
-INFO: Thread pool-2-thread-5: Stored body
-Dec 02, 2021 12:29:40 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
-INFO: Thread pool-2-thread-3: Begin constructing engine
-Dec 02, 2021 12:29:40 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+дек. 02, 2021 1:02:58 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
+INFO: Thread pool-2-thread-2: Begin constructing engine
+дек. 02, 2021 1:02:58 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:02:58 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:03:30 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Stored accessory
+дек. 02, 2021 1:03:30 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Stored body
+дек. 02, 2021 1:03:42 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:03:42 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:03:42 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Stored body
+дек. 02, 2021 1:03:42 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Stored accessory
+дек. 02, 2021 1:03:47 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:03:47 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:03:52 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse BODY_WAREHOUSE is full: true
+дек. 02, 2021 1:03:53 AM com.example.lab_08.classes.suppliers.CarSupplier orderToConstruct
+INFO: Thread pool-2-thread-1: Begin constructing car
+дек. 02, 2021 1:03:53 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:03:53 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Failed to store body
+дек. 02, 2021 1:03:58 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse ACCESSORY_WAREHOUSE is full: true
+дек. 02, 2021 1:03:58 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Failed to store accessory
+дек. 02, 2021 1:03:58 AM com.example.lab_08.classes.suppliers.EngineSupplier store
+INFO: Thread pool-2-thread-2: Stored engine
+дек. 02, 2021 1:04:02 AM com.example.lab_08.classes.suppliers.CarSupplier store
+INFO: Thread pool-2-thread-1: Stored car
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer takes car
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.system.Dealer sellCar
+INFO: Thread pool-2-thread-5: Dealer sells car
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Stored body
+дек. 02, 2021 1:04:07 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Stored accessory
+дек. 02, 2021 1:04:13 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:04:13 AM com.example.lab_08.classes.suppliers.CarSupplier orderToConstruct
+INFO: Thread pool-2-thread-1: Begin constructing car
+дек. 02, 2021 1:04:13 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:04:16 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse BODY_WAREHOUSE is full: true
+дек. 02, 2021 1:04:16 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
+INFO: Thread pool-2-thread-2: Begin constructing engine
+дек. 02, 2021 1:04:16 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Failed to store body
+дек. 02, 2021 1:04:16 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse ACCESSORY_WAREHOUSE is full: true
+дек. 02, 2021 1:04:17 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:04:23 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:04:17 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Failed to store accessory
+дек. 02, 2021 1:04:23 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Stored body
+дек. 02, 2021 1:04:29 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:04:30 AM com.example.lab_08.classes.suppliers.EngineSupplier store
+INFO: Thread pool-2-thread-2: Stored engine
+дек. 02, 2021 1:04:30 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Stored accessory
+дек. 02, 2021 1:04:33 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:04:34 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
+INFO: Thread pool-2-thread-3: Begin constructing body
+дек. 02, 2021 1:04:34 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse BODY_WAREHOUSE is full: true
+дек. 02, 2021 1:04:34 AM com.example.lab_08.classes.suppliers.BodySupplier store
+INFO: Thread pool-2-thread-3: Failed to store body
+дек. 02, 2021 1:04:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
+INFO: Thread pool-2-thread-4: Begin constructing accessory
+дек. 02, 2021 1:04:35 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
+INFO: Warehouse ACCESSORY_WAREHOUSE is full: true
+дек. 02, 2021 1:04:35 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
+INFO: Thread pool-2-thread-4: Failed to store accessory
+дек. 02, 2021 1:04:38 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
+INFO: Thread pool-2-thread-2: Begin constructing engine
+дек. 02, 2021 1:04:45 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:04:52 AM com.example.lab_08.classes.suppliers.EngineSupplier store
+INFO: Thread pool-2-thread-2: Stored engine
+дек. 02, 2021 1:04:59 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:05:09 AM com.example.lab_08.classes.system.Dealer takeCar
+INFO: Thread pool-2-thread-5: Dealer doesn't take car
+дек. 02, 2021 1:05:09 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
+INFO: Thread pool-2-thread-2: Begin constructing engine
+дек. 02, 2021 1:05:17 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
 INFO: Warehouse ENGINE_WAREHOUSE is full: true
-Dec 02, 2021 12:29:40 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
-INFO: Thread pool-2-thread-7: Begin constructing accessory
-Dec 02, 2021 12:29:51 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
-INFO: Thread pool-2-thread-6: Begin constructing body
-Dec 02, 2021 12:29:51 AM com.example.lab_08.classes.suppliers.AccessorySupplier orderToConstruct
-INFO: Thread pool-2-thread-8: Begin constructing accessory
-Dec 02, 2021 12:29:51 AM com.example.lab_08.classes.suppliers.EngineSupplier orderToConstruct
-INFO: Thread pool-2-thread-4: Begin constructing engine
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.BodySupplier store
-INFO: Thread pool-2-thread-6: Stored body
-Dec 02, 2021 12:29:51 AM com.example.lab_08.classes.suppliers.BodySupplier orderToConstruct
-INFO: Thread pool-2-thread-5: Begin constructing body
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.BodySupplier store
-INFO: Thread pool-2-thread-5: Stored body
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
-INFO: Thread pool-2-thread-8: Stored accessory
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.EngineSupplier store
-INFO: Thread pool-2-thread-3: Failed to store engine
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-13: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.AccessorySupplier store
-INFO: Thread pool-2-thread-7: Stored accessory
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-13: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-17: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-14: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-16: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-16: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-15: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-12: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-11: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.warehouses.WarehouseController pushItem
-INFO: Warehouse ENGINE_WAREHOUSE is full: true
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-10: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-9: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer takeCar
-INFO: Thread pool-2-thread-18: Dealer doesn't take car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-18: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-9: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-10: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.suppliers.EngineSupplier store
-INFO: Thread pool-2-thread-4: Failed to store engine
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-11: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-12: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-15: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-14: Dealer sells car
-Dec 02, 2021 12:32:04 AM com.example.lab_08.classes.system.Dealer sellCar
-INFO: Thread pool-2-thread-17: Dealer sells car
+дек. 02, 2021 1:05:17 AM com.example.lab_08.classes.suppliers.EngineSupplier store
+INFO: Thread pool-2-thread-2: Failed to store engine

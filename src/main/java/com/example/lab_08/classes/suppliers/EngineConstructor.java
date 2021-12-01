@@ -13,43 +13,4 @@ public class EngineConstructor implements IConstructor {
     public Engine construct() {
         return new Engine(100);
     }
-
-    public static class CarConstructor implements ICarBuilder {
-        private WarehouseController engineWarehouseController;
-        private WarehouseController bodyWarehouseController;
-        private WarehouseController accessoryWarehouseController;
-
-        public void reset() {
-            // to be upd
-        }
-
-        public CarConstructor(WarehouseController engineWC, WarehouseController bodyWC, WarehouseController accessoryWC) {
-            this.engineWarehouseController = engineWC;
-            this.bodyWarehouseController = bodyWC;
-            this.accessoryWarehouseController = accessoryWC;
-        }
-
-        @Override
-        public Engine getEngine() { return (Engine) engineWarehouseController.popItem(); }
-
-        @Override
-        public Body getBody() {
-            return (Body) bodyWarehouseController.popItem();
-        }
-
-        @Override
-        public Accessory getAccessory() { return (Accessory) accessoryWarehouseController.popItem(); }
-
-        @Override
-        public Car construct() {
-            Engine engine = getEngine();
-            Body body = getBody();
-            Accessory accessory = getAccessory();
-
-            if (engine == null || body == null || accessory == null)
-                return null;
-            else
-                return new Car(body, engine, accessory);
-        }
-    }
 }
