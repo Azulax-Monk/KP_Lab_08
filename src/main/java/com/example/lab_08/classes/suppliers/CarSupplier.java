@@ -7,8 +7,10 @@ import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.ICarBuilder;
 import com.example.lab_08.interfaces.ISupplier;
+import java.util.logging.Logger;
 
 public class CarSupplier implements ISupplier {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Car carToSupply;
     private WarehouseController carWarehouseController;
     private ICarBuilder carConstructor;
@@ -43,6 +45,7 @@ public class CarSupplier implements ISupplier {
             Thread.sleep(speedTime);
 
             if (Thread.currentThread().isInterrupted()) {
+                LOGGER.warning("Thread " + Thread.currentThread().getName() + ": Thread interrupted");
                 throw new InterruptedException("Thread interrupted");
             }
 
@@ -60,7 +63,7 @@ public class CarSupplier implements ISupplier {
 
     @Override
     public Car orderToConstruct() {
-        System.out.println("Begin constructing car");
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing car");
         return carConstructor.construct();
     }
 
@@ -68,12 +71,12 @@ public class CarSupplier implements ISupplier {
     public boolean store() {
         if (carWarehouseController.pushItem(carToSupply)) {
             carToSupply = null;
-            System.out.println("Stored car");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Stored car");
             return true;
         }
         else {
             this.state = SupplierState.STOPPED;
-            System.out.println("Failed to store car");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Failed to store car");
             return false;
         }
     }

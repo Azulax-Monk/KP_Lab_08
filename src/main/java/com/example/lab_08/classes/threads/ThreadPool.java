@@ -2,10 +2,13 @@ package com.example.lab_08.classes.threads;
 
 import java.util.ArrayList;
 import java.util.concurrent.*;
+import java.util.logging.Logger;
+
 
 import static java.lang.Thread.MAX_PRIORITY;
 
 public final class ThreadPool {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static ThreadPool instance;
     private ExecutorService executorService;
     private ArrayList<Future<?>> tasks;
@@ -30,6 +33,8 @@ public final class ThreadPool {
     }
 
     public void cleanUp() {
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Program stopping");
+
         for (var t : tasks) {
             t.cancel(true);
         }

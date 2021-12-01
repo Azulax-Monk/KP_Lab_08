@@ -2,8 +2,10 @@ package com.example.lab_08.classes.system;
 
 import com.example.lab_08.classes.carParts.Car;
 import com.example.lab_08.classes.warehouses.WarehouseController;
+import java.util.logging.Logger;
 
 public class Dealer {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private WarehouseController carWarehouseController;
     private boolean state;
     private long speedTime;
@@ -22,6 +24,7 @@ public class Dealer {
             Thread.sleep(speedTime);
 
             if (Thread.currentThread().isInterrupted()) {
+                LOGGER.warning("Thread " + Thread.currentThread().getName() + ": Thread interrupted");
                 throw new InterruptedException("Thread interrupted");
             }
 
@@ -33,17 +36,17 @@ public class Dealer {
     public boolean takeCar() {
         car = (Car) carWarehouseController.popItem();
         if (car != null) {
-            System.out.println("Dealer takes car");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Dealer takes car");
             return  true;
         }
         else {
-            System.out.println("Dealer doesn't take car");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Dealer doesn't take car");
             return false;
         }
     }
 
     public boolean sellCar() {
-        System.out.println("Dealer sells car");
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Dealer sells car");
         return true;
     }
 }

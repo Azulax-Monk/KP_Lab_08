@@ -1,4 +1,4 @@
-package com.example.lab_08.Logger;
+package com.example.lab_08.classes.logger;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

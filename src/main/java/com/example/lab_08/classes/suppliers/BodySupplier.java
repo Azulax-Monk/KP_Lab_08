@@ -7,8 +7,10 @@ import com.example.lab_08.classes.warehouses.WarehouseController;
 import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
+import java.util.logging.Logger;
 
 public class BodySupplier implements ISupplier {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private Body bodyToSupply;
     private WarehouseController warehouseController;
     private SupplierState state;
@@ -38,6 +40,7 @@ public class BodySupplier implements ISupplier {
             Thread.sleep(speedTime);
 
             if (Thread.currentThread().isInterrupted()) {
+                LOGGER.warning("Thread " + Thread.currentThread().getName() + ": Thread interrupted");
                 throw new InterruptedException("Thread interrupted");
             }
 
@@ -55,7 +58,7 @@ public class BodySupplier implements ISupplier {
 
     @Override
     public Body orderToConstruct() {
-        System.out.println("Begin constructing body");
+        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing body");
         return new BodyConstructor().construct();
     }
 
@@ -63,12 +66,12 @@ public class BodySupplier implements ISupplier {
     public boolean store() {
         if (warehouseController.pushItem(bodyToSupply)) {
             bodyToSupply = null;
-            System.out.println("Stored body");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Stored body");
             return true;
         }
         else {
             this.state = SupplierState.STOPPED;
-            System.out.println("Failed to store accessory");
+            LOGGER.info("Thread " + Thread.currentThread().getName() + ": Failed to store body");
             return false;
         }
     }

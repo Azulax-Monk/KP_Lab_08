@@ -20,7 +20,6 @@ public class MainApplication extends Application {
 
     @Override
     public void stop(){
-        System.out.println("Stage is closing");
         ThreadPool.getInstance().cleanUp();
     }
 
