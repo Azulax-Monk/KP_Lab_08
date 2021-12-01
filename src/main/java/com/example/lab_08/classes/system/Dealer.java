@@ -15,7 +15,7 @@ public class Dealer {
     public Dealer(WarehouseController carWarehouseController) {
         this.carWarehouseController = carWarehouseController;
         state = true;
-        speedTime = 5000; // to be upd
+        speedTime = 100000; // to be upd
         car = null;
     }
 

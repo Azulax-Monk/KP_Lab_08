@@ -6,6 +6,7 @@ import com.example.lab_08.enums.SupplierState;
 import com.example.lab_08.interfaces.INotifier;
 import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
+import java.util.logging.Logger;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class WarehouseController implements INotifier {
             return true;
         }
         else {
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info("Warehouse " + assignedWarehouse.getType() + " is full: " + assignedWarehouse.isFull());
             notifySuppliers(SupplierState.STOPPED);
             return false;
         }
