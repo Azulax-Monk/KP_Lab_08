@@ -25,7 +25,7 @@ public class CarSupplier implements ISupplier {
         this.carWarehouseController = carWC;
         this.carConstructor = new CarConstructor(engineWC, bodyWC, accessoryWC);
         this.state = SupplierState.STOPPED;
-        speedTime = 5000;       // to be upd
+        speedTime = 1000;
         carsCount = 0;
     }
 
@@ -53,7 +53,8 @@ public class CarSupplier implements ISupplier {
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
-                carToSupply = orderToConstruct();
+                if (this.carToSupply == null)
+                    carToSupply = orderToConstruct();
                 LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed car");
                 store();
             }

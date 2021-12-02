@@ -20,7 +20,7 @@ public class EngineSupplier implements ISupplier {
 
     public EngineSupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;       // to be upd
+        speedTime = 1000;
         state = SupplierState.WORKING;
     }
 
@@ -48,7 +48,8 @@ public class EngineSupplier implements ISupplier {
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
-                engineToSupply = orderToConstruct();
+                if (this.engineToSupply == null)
+                    engineToSupply = orderToConstruct();
                 LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed engine");
                 store();
             }

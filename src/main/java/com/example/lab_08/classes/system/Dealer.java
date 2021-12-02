@@ -21,7 +21,7 @@ public class Dealer implements INotifier {
     public Dealer(WarehouseController carWarehouseController) {
         this.carWarehouseController = carWarehouseController;
         state = DealerState.WAITING;
-        speedTime = 5000; // to be upd
+        speedTime = 1000;
         car = null;
     }
 

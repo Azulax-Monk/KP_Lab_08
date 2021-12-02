@@ -20,7 +20,7 @@ public class BodySupplier implements ISupplier {
 
     public BodySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;       // to be upd
+        speedTime = 1000;
         state = SupplierState.WORKING;
     }
 
@@ -48,7 +48,8 @@ public class BodySupplier implements ISupplier {
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
-                bodyToSupply = orderToConstruct();
+                if (this.bodyToSupply == null)
+                    bodyToSupply = orderToConstruct();
                 LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed body");
                 store();
             }

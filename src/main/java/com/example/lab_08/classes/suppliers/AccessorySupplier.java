@@ -20,7 +20,7 @@ public class AccessorySupplier implements ISupplier {
 
     public AccessorySupplier(WarehouseController warehouseController) {
         this.warehouseController = warehouseController;
-        speedTime = 5000;   // to be upd
+        speedTime = 1000;
         state = SupplierState.WORKING;
     }
 
@@ -48,7 +48,8 @@ public class AccessorySupplier implements ISupplier {
             }
 
             if (this.state.equals(SupplierState.WORKING)) {
-                accessoryToSupply = orderToConstruct();
+                if (this.accessoryToSupply == null)
+                    accessoryToSupply = orderToConstruct();
                 LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed accessory");
                 store();
             }
