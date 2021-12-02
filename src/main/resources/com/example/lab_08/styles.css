@@ -1,3 +1,22 @@
+Slider {
+    -fx-major-tick-unit: 3000;
+    -fx-show-tick-labels: true;
+    -fx-snap-to-ticks: true;
+    -fx-spacing: 10;
+}
+
+Button {
+    -fx-pref-width: 65;
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
 Label {
     -fx-wrap-text: true;
     -fx-font-family: Calibri;
@@ -10,8 +29,8 @@ Label {
 }
 
 .item {
-    -fx-alignment: center-left;
-    -fx-text-alignment: left;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }
 
 Text {
@@ -25,17 +44,19 @@ Text {
 }
 
 .menu-pane {
-    -fx-background-color: #aeaeae;
+    -fx-background-color: #7B8175;
+    -fx-padding: 10, 5, 5, 5;
+    -fx-spacing: 10;
 }
 
 .config-pane {
-    -fx-background-color: #e2d6e4;
-    -fx-hgap: 10;
+    -fx-background-color: #FFFFFD;
+    -fx-hgap: 15;
     -fx-padding: 10;
 }
 
 .elements-pane {
-    -fx-background-color: #b4cfcb;
+    -fx-background-color: #9B9693;
     -fx-grid-lines-visible: true;
     -fx-stroke-width: 0.5;
 }

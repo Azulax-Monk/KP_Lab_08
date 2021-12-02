@@ -10,7 +10,15 @@
             <Image url="@../icons/warehouse.png" />
         </image>
     </WrappedImageView>
-    <Label fx:id="nameField" text="Warehouse" styleClass="header"/>
-    <Label fx:id="itemCountField" text="Items count: "/>
-    <Label fx:id="stateField" text="State: "/>
+    <HBox alignment="TOP_CENTER">
+        <Label fx:id="nameField" text="Warehouse" styleClass="header"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="Items stored: " />
+        <Label fx:id="storedItemsField" text="-" />
+    </HBox>
+    <HBox alignment="BOTTOM_CENTER">
+        <Label text="State: " />
+        <Label fx:id="stateField" text="-" />
+    </HBox>
 </fx:root>

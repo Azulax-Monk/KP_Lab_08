@@ -1,7 +1,10 @@
 package com.example.lab_08.models;
 
+import com.example.lab_08.classes.events.Event;
 import com.example.lab_08.classes.events.EventPool;
+import com.example.lab_08.classes.events.EventType;
 import com.example.lab_08.classes.warehouses.WarehouseController;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,7 +20,25 @@ public class WarehouseModel {
 
     public WarehouseModel(WarehouseController warehouse) {
         this.warehouseController = warehouse;
-        this.warehouseController.setEventPool(eventPool);
+
+        eventPool = new EventPool();
+        eventPool.addEvent(new Event(EventType.ENTITY_STATE_CHANGED));
+        eventPool.addEvent(new Event(EventType.ITEM_STORED));
+
+        warehouseController.setEventPool(eventPool);
+        warehouseController.getWarehouse().setEventPool(eventPool);
+        eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).addListener(() ->
+        {
+            setState(warehouseController.getWarehouse().getState().toString());
+        });
+
+        eventPool.getEvent(EventType.ITEM_STORED).addListener(() ->
+        {
+            setStoredItemsCount(warehouseController.getWarehouse().getStoredItemCount());
+            setCreatedItemsCount((int) warehouseController.getItemsProduced());
+        });
+
+        warehouseController.getEventPool().getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
     }
 
     // Getters and setters region
@@ -30,7 +51,11 @@ public class WarehouseModel {
     }
 
     public void setStoredItemsCount(int storedItemsCount) {
-        this.storedItemsCount.set(storedItemsCount);
+        Platform.runLater(
+                () -> {
+                    this.storedItemsCount.set(storedItemsCount);
+                }
+        );
     }
 
     public int getCreatedItemsCount() {
@@ -42,7 +67,11 @@ public class WarehouseModel {
     }
 
     public void setCreatedItemsCount(int createdItemsCount) {
-        this.createdItemsCount.set(createdItemsCount);
+        Platform.runLater(
+                () -> {
+                    this.createdItemsCount.set(createdItemsCount);
+                }
+        );
     }
 
     public String getState() {
@@ -54,6 +83,10 @@ public class WarehouseModel {
     }
 
     public void setState(String state) {
-        this.state.set(state);
+        Platform.runLater(
+                () -> {
+                    this.state.set(state);
+                }
+        );
     }
 }

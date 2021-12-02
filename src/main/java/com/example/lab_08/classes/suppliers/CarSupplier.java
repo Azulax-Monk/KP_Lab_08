@@ -31,8 +31,10 @@ public class CarSupplier implements ISupplier {
 
     @Override
     public void setState(SupplierState state) {
-        this.state = state;
-        eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
+        if (!this.state.equals(state)) {
+            this.state = state;
+            eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
+        }
     }
 
     @Override
@@ -52,6 +54,7 @@ public class CarSupplier implements ISupplier {
 
             if (this.state.equals(SupplierState.WORKING)) {
                 carToSupply = orderToConstruct();
+                LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed car");
                 store();
             }
             else {
@@ -64,13 +67,12 @@ public class CarSupplier implements ISupplier {
 
     @Override
     public Car orderToConstruct() {
-        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing car");
         return carConstructor.construct();
     }
 
     @Override
     public boolean store() {
-        eventPool.getEvent(EventType.ITEM_CREATED).invoke();
+        LOGGER.info("Trying to store the car...");
         if (carWarehouseController.pushItem(carToSupply)) {
             carToSupply = null;
             LOGGER.info("Thread " + Thread.currentThread().getName() + ": Stored car");

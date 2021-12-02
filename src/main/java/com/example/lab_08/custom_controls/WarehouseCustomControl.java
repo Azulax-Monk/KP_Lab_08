@@ -17,11 +17,11 @@ import javafx.scene.layout.VBox;
 public class WarehouseCustomControl extends VBox {
     @FXML private Label nameField;
     @FXML private Label stateField;
-    @FXML private Label itemsCountField;
+    @FXML private Label storedItemsField;
     @FXML private StringProperty name = new SimpleStringProperty("");
     @FXML private StringProperty state = new SimpleStringProperty("");
-    @FXML private IntegerProperty storedDetailsCount = new SimpleIntegerProperty(0);
-    @FXML private IntegerProperty warehouseCount = new SimpleIntegerProperty(0);
+    @FXML private StringProperty storedItemsCount = new SimpleStringProperty("");
+    @FXML private StringProperty warehouseCount = new SimpleStringProperty("");
 
     public WarehouseCustomControl() {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("views/WarehouseView.fxml"));
@@ -33,6 +33,14 @@ public class WarehouseCustomControl extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        bindProperties();
+    }
+
+    private void bindProperties() {
+        nameField.textProperty().bind(name);
+        storedItemsField.textProperty().bind(storedItemsCount);
+        stateField.textProperty().bind(state);
     }
 
     // Getters and setters region
@@ -46,37 +54,22 @@ public class WarehouseCustomControl extends VBox {
 
     public void setState(String state) {
         this.state.set(state);
-        stateField.textProperty().set("State: " + state);
     }
 
-    public int getStoredDetailsCount() {
-        return storedDetailsCount.get();
+    public String getStoredDetailsCount() {
+        return storedItemsCount.get();
     }
 
-    public IntegerProperty storedDetailsCountProperty() {
-        return storedDetailsCount;
+    public StringProperty storedItemsCountProperty() {
+        return storedItemsCount;
     }
 
-    public void setStoredDetailsCount(int createdDetailsCount) {
-        this.storedDetailsCount.set(createdDetailsCount);
-        itemsCountField.textProperty().set("Items created: " + getStoredDetailsCount());
-    }
-
-    public int getWarehouseCount() {
-        return warehouseCount.get();
-    }
-
-    public IntegerProperty warehouseCountProperty() {
-        return warehouseCount;
-    }
-
-    public void setWarehouseCount(int supplierCount) {
-        this.warehouseCount.set(supplierCount);
-        nameField.textProperty().set(getName());
+    public void setStoredItemsCountCount(int storedItemsCount) {
+        this.storedItemsCount.set(String.valueOf(storedItemsCount));
     }
 
     public String getName() {
-        return name.get() + " <" + getWarehouseCount() + ">";
+        return name.get();
     }
 
     public StringProperty nameProperty() {
@@ -85,6 +78,5 @@ public class WarehouseCustomControl extends VBox {
 
     public void setName(String name) {
         this.name.set(name);
-        nameField.textProperty().set(getName());
     }
 }

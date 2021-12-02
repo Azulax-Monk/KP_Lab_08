@@ -17,7 +17,7 @@ public class Event {
         listeners.add(toAdd);
     }
 
-    public void invoke(){
+    public synchronized void invoke(){
         for(IListener l : listeners)
             l.notifyMe();
     }

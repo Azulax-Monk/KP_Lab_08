@@ -13,6 +13,7 @@ import com.example.lab_08.interfaces.ISupplier;
 import com.example.lab_08.interfaces.IWarehouse;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Factory {
     private ArrayList<CarSupplier> carSuppliers;
@@ -49,6 +50,7 @@ public class Factory {
                         supplier.run();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+                        Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info("Supplier: " + supplier.getClass().getName() + "stopped working");
                     }
                 }
             });

@@ -11,7 +11,7 @@ public class MainLogger {
     static private Formatter formatterHTML;
 
     static public void setup() throws IOException {
-
+        
         // get the global logger to configure it
         Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 

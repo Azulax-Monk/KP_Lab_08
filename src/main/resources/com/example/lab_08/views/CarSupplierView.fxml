@@ -10,7 +10,16 @@
             <Image url="@../icons/car_supplier.png" />
         </image>
     </WrappedImageView>
-    <Label fx:id="nameField" text="Car supplier" styleClass="header"/>
-    <Label fx:id="carsCountField" text="Cars built: "/>
-    <Label fx:id="stateField" text="State: "/>
+    <HBox alignment="TOP_CENTER">
+        <Label fx:id="nameField" text="Supplier" styleClass="header"/>
+        <Label fx:id="supplierCountField" text="-" styleClass="header"/>
+    </HBox>
+    <HBox alignment="CENTER">
+        <Label text="Cars built: " />
+        <Label fx:id="createdItemsField" text="-" />
+    </HBox>
+    <HBox alignment="BOTTOM_CENTER">
+        <Label text="State: " />
+        <Label fx:id="stateField" text="-" />
+    </HBox>
 </fx:root>

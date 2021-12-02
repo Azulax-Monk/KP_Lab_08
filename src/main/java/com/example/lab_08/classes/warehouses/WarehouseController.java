@@ -32,6 +32,8 @@ public class WarehouseController implements INotifier {
         if (!assignedWarehouse.isFull()) {
             assignedWarehouse.pushItem(item);
             itemsProduced++;
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info("Warehouse " + assignedWarehouse.getType() + " stored: " + item.getClass().getSimpleName());
+            eventPool.getEvent(EventType.ITEM_STORED).invoke();
             return true;
         }
         else {
@@ -42,19 +44,21 @@ public class WarehouseController implements INotifier {
     }
 
     public synchronized Object popItem() {
-
-        if (supplierList.get(0).getState() != SupplierState.WORKING)
-            notifySuppliers(SupplierState.WORKING);
-
         if (!assignedWarehouse.isEmpty()) {
-            return assignedWarehouse.popItem();
+            Object o = assignedWarehouse.popItem();
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info("Warehouse " + assignedWarehouse.getType() + " poped: " + o.getClass().getSimpleName());
+
+            notifySuppliers(SupplierState.WORKING);
+            return o;
         }
         else {
+            Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info("Warehouse " + assignedWarehouse.getType() + " is empty: " + assignedWarehouse.isEmpty());
+            notifySuppliers(SupplierState.WORKING);
             return null;
         }
     }
 
-    public void notifySuppliers(SupplierState state) {
+    public synchronized void notifySuppliers(SupplierState state) {
         for (var s : supplierList) {
             s.setState(state);
         }

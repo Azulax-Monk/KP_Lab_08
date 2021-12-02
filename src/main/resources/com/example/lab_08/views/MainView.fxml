@@ -20,6 +20,7 @@
 <?import com.example.lab_08.custom_controls.DetailSupplierCustomControl?>
 <?import com.example.lab_08.custom_controls.WarehouseCustomControl?>
 <?import com.example.lab_08.custom_controls.DealerCustomControl?>
+<?import javafx.scene.layout.HBox?>
 <GridPane alignment="CENTER"
           xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.lab_08.controllers.MainController">
@@ -33,9 +34,10 @@
         <ColumnConstraints percentWidth="100" />
     </columnConstraints>
 
-    <GridPane GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="menu-pane" >
-
-    </GridPane>
+    <HBox GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="menu-pane" >
+        <Button text="Start" onAction="#start" />
+        <Button text="Stop" onAction="#stop" />
+    </HBox>
 
     <GridPane GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="config-pane">
         <rowConstraints>
@@ -52,15 +54,15 @@
         </columnConstraints>
 
         <Label text="Engine production speed" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <Slider GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Slider fx:id="engineSpeedSlider" GridPane.columnIndex="1" GridPane.rowIndex="0" />
         <Label text="Body production speed" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Slider GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Slider fx:id="bodySpeedSlider"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
         <Label text="Accessory production speed" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <Slider GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Slider fx:id="accessorySpeedSlider" GridPane.columnIndex="3" GridPane.rowIndex="0" />
         <Label text="Car production speed" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Slider GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Slider fx:id="carSpeedSlider" GridPane.columnIndex="3" GridPane.rowIndex="1" />
         <Label text="Dealer request speed" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-        <Slider GridPane.columnIndex="5" GridPane.rowIndex="0" />
+        <Slider fx:id="dealerSpeedSlider" GridPane.columnIndex="5" GridPane.rowIndex="0" />
     </GridPane>
 
     <GridPane GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="elements-pane">

@@ -5,21 +5,21 @@
 <?import com.example.lab_08.utils.WrappedImageView?>
 <?import javafx.scene.image.Image?>
 <fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml" styleClass="icon-group">
-    <WrappedImageView preserveRatio="true">
-        <image>
-            <Image url="@../icons/supplier.png" />
-        </image>
-    </WrappedImageView>
-    <HBox>
-        <Label fx:id="nameField" text="Supplier" styleClass="header"/>
-        <Label fx:id="supplierCountField" text="-" styleClass="header"/>
-    </HBox>
-    <HBox>
-        <Label text="Items created: " styleClass="item"/>
-        <Label fx:id="createdItemsField" text="-" styleClass="item"/>
-    </HBox>
-    <HBox>
-        <Label text="State: " styleClass="item"/>
-        <Label fx:id="stateField" text="-" styleClass="item"/>
-    </HBox>
+        <WrappedImageView preserveRatio="true">
+            <image>
+                <Image url="@../icons/supplier.png" />
+            </image>
+        </WrappedImageView>
+        <HBox alignment="TOP_CENTER">
+            <Label fx:id="nameField" text="Supplier" styleClass="header"/>
+            <Label fx:id="supplierCountField" text="-" styleClass="header"/>
+        </HBox>
+        <HBox alignment="CENTER">
+            <Label text="Items created: " />
+            <Label fx:id="createdItemsField" text="-" />
+        </HBox>
+        <HBox alignment="BOTTOM_CENTER">
+            <Label text="State: " />
+            <Label fx:id="stateField" text="-" />
+        </HBox>
 </fx:root>

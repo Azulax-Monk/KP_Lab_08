@@ -26,8 +26,10 @@ public class BodySupplier implements ISupplier {
 
     @Override
     public void setState(SupplierState state) {
-        this.state = state;
-        eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
+        if (!this.state.equals(state)) {
+            this.state = state;
+            eventPool.getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
+        }
     }
 
     @Override
@@ -47,6 +49,7 @@ public class BodySupplier implements ISupplier {
 
             if (this.state.equals(SupplierState.WORKING)) {
                 bodyToSupply = orderToConstruct();
+                LOGGER.info("Thread " + Thread.currentThread().getName() + ": Constructed body");
                 store();
             }
             else {
@@ -59,7 +62,6 @@ public class BodySupplier implements ISupplier {
 
     @Override
     public Body orderToConstruct() {
-        LOGGER.info("Thread " + Thread.currentThread().getName() + ": Begin constructing body");
         return new BodyConstructor().construct();
     }
 

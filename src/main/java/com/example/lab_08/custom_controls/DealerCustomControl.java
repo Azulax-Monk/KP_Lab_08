@@ -17,11 +17,12 @@ import javafx.scene.layout.VBox;
 public class DealerCustomControl extends VBox {
     @FXML private Label nameField;
     @FXML private Label stateField;
-    @FXML private Label carsCountField;
+    @FXML private Label boughtCarsField;
+    @FXML private Label dealerCountField;
     @FXML private StringProperty name = new SimpleStringProperty("");
     @FXML private StringProperty state = new SimpleStringProperty("");
-    @FXML private IntegerProperty boughtCount = new SimpleIntegerProperty(0);
-    @FXML private IntegerProperty dealerCount = new SimpleIntegerProperty(0);
+    @FXML private StringProperty boughtCarsCount = new SimpleStringProperty("");
+    @FXML private StringProperty dealerCount = new SimpleStringProperty("");
 
     public DealerCustomControl() {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("views/DealerView.fxml"));
@@ -33,6 +34,15 @@ public class DealerCustomControl extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        bindProperties();
+    }
+
+    private void bindProperties() {
+        nameField.textProperty().bind(name);
+        dealerCountField.textProperty().bind(dealerCount);
+        boughtCarsField.textProperty().bind(boughtCarsCount);
+        stateField.textProperty().bind(state);
     }
 
     // Getters and setters region
@@ -46,37 +56,34 @@ public class DealerCustomControl extends VBox {
 
     public void setState(String state) {
         this.state.set(state);
-        stateField.textProperty().set("State: " + state);
     }
 
-    public int getBoughtCarsCount() {
-        return boughtCount.get();
+    public String getBoughtCarsCount() {
+        return boughtCarsCount.get();
     }
 
-    public IntegerProperty boughtCarsCountProperty() {
-        return boughtCount;
+    public StringProperty boughtCarsCountProperty() {
+        return boughtCarsCount;
     }
 
-    public void setBoughtCarsCount(int createdDetailsCount) {
-        this.boughtCount.set(createdDetailsCount);
-        carsCountField.textProperty().set("Cars bought: " + getBoughtCarsCount());
+    public void setBoughtCarsCount(String boughtCarsCount) {
+        this.boughtCarsCount.set(boughtCarsCount);
     }
 
-    public int getDealerCount() {
+    public String getDealerCount() {
         return dealerCount.get();
     }
 
-    public IntegerProperty dealerCountProperty() {
+    public StringProperty dealerCountProperty() {
         return dealerCount;
     }
 
-    public void setDealerCount(int supplierCount) {
-        this.dealerCount.set(supplierCount);
-        nameField.textProperty().set(getName());
+    public void setDealerCount(String dealerCount) {
+        this.dealerCount.set(dealerCount);
     }
 
     public String getName() {
-        return name.get() + " <" + getDealerCount() + ">";
+        return name.get();
     }
 
     public StringProperty nameProperty() {
@@ -84,7 +91,6 @@ public class DealerCustomControl extends VBox {
     }
 
     public void setName(String name) {
-        this.name.set(name);
-        nameField.textProperty().set(getName());
+        this.name.set(name + ": ");
     }
 }

@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class SupplierModel {
     @FXML private StringProperty state = new SimpleStringProperty("");
     @FXML private IntegerProperty supplierCount = new SimpleIntegerProperty(0);
-    @FXML private IntegerProperty itemsCreatedCount = new SimpleIntegerProperty(0);
+//    @FXML private IntegerProperty itemsCreatedCount = new SimpleIntegerProperty(0);
+    @FXML private IntegerProperty speedTime = new SimpleIntegerProperty(0);
     private ArrayList<? extends ISupplier> suppliers;
     private EventPool eventPool;
 
@@ -25,7 +26,6 @@ public class SupplierModel {
         setSupplierCount(this.suppliers.size());
 
         eventPool = new EventPool();
-        //eventPool.addEvent(new Event(EventType.ENTITY_COUNT_CHANGED));
         eventPool.addEvent(new Event(EventType.ENTITY_STATE_CHANGED));
         eventPool.addEvent(new Event(EventType.ITEM_CREATED));
         for (var s : suppliers) {
@@ -37,10 +37,14 @@ public class SupplierModel {
             setState(suppliers.get(0).getState().toString());
         });
 
-        eventPool.getEvent(EventType.ITEM_CREATED).addListener(() ->
-        {
-            setItemsCreatedCount(getItemsCreatedCount() + 1);
-        });
+//        eventPool.getEvent(EventType.ITEM_CREATED).addListener(() ->
+//        {
+//            setItemsCreatedCount(getItemsCreatedCount() + 1);
+//        });
+
+        for (var s : suppliers) {
+            s.getEventPool().getEvent(EventType.ENTITY_STATE_CHANGED).invoke();
+        }
     }
 
 
@@ -73,21 +77,35 @@ public class SupplierModel {
         this.supplierCount.set(supplierCount);
     }
 
+//    public int getItemsCreatedCount() {
+//        return itemsCreatedCount.get();
+//    }
+//
+//    public IntegerProperty itemsCreatedCountProperty() {
+//        return itemsCreatedCount;
+//    }
+//
+//    public void setItemsCreatedCount(int itemsCreatedCount) {
+//        // Updates UI in separate thread
+//        Platform.runLater(
+//                () -> {
+//                    this.itemsCreatedCount.set(itemsCreatedCount);
+//                }
+//        );
+//    }
 
-    public int getItemsCreatedCount() {
-        return itemsCreatedCount.get();
+    public int getSpeedTime() {
+        return speedTime.get();
     }
 
-    public IntegerProperty itemsCreatedCountProperty() {
-        return itemsCreatedCount;
+    public IntegerProperty speedTimeProperty() {
+        return speedTime;
     }
 
-    public void setItemsCreatedCount(int itemsCreatedCount) {
-        // Updates UI in separate thread
-        Platform.runLater(
-                () -> {
-                    this.itemsCreatedCount.set(itemsCreatedCount);
-                }
-        );
+    public void setSpeedTime(int speedTime) {
+        this.speedTime.set(speedTime);
+        for (var s : suppliers) {
+            s.setSpeedTime(speedTime);
+        }
     }
 }

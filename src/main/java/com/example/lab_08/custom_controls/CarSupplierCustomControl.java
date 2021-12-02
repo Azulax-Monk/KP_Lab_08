@@ -16,12 +16,13 @@ import javafx.scene.layout.VBox;
 
 public class CarSupplierCustomControl extends VBox {
     @FXML private Label nameField;
-    @FXML private Label carsCountField;
+    @FXML private Label createdItemsField;
     @FXML private Label stateField;
+    @FXML private Label supplierCountField;
     @FXML private StringProperty name = new SimpleStringProperty("");
     @FXML private StringProperty state = new SimpleStringProperty("");
-    @FXML private IntegerProperty createdCarsCount = new SimpleIntegerProperty(0);
-    @FXML private IntegerProperty supplierCount = new SimpleIntegerProperty(0);
+    @FXML private StringProperty createdItemsCount = new SimpleStringProperty("");
+    @FXML private StringProperty supplierCount = new SimpleStringProperty("");
 
     public CarSupplierCustomControl() {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("views/CarSupplierView.fxml"));
@@ -33,20 +34,28 @@ public class CarSupplierCustomControl extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        bindProperties();
+    }
+
+    private void bindProperties() {
+        nameField.textProperty().bind(name);
+        supplierCountField.textProperty().bind(supplierCount);
+        createdItemsField.textProperty().bind(createdItemsCount);
+        stateField.textProperty().bind(state);
     }
 
     // Getters and setters region
-    public int getCreatedCarsCount() {
-        return createdCarsCount.get();
+    public String getCreatedItemsCountCount() {
+        return createdItemsCount.get();
     }
 
-    public IntegerProperty createdCarsCountProperty() {
-        return createdCarsCount;
+    public StringProperty createdItemsCountProperty() {
+        return createdItemsCount;
     }
 
-    public void setCreatedCarsCount(int createdCarsCount) {
-        this.createdCarsCount.set(createdCarsCount);
-        carsCountField.textProperty().set("Cars built: " + getCreatedCarsCount());
+    public void setCreatedItemsCountCount(int createdCarsCount) {
+        this.createdItemsCount.set(String.valueOf(createdCarsCount));
     }
 
     public String getState() {
@@ -59,7 +68,6 @@ public class CarSupplierCustomControl extends VBox {
 
     public void setState(String state) {
         this.state.set(state);
-        stateField.textProperty().set("State: " + getState());
     }
 
     public String getName() {
@@ -71,20 +79,18 @@ public class CarSupplierCustomControl extends VBox {
     }
 
     public void setName(String name) {
-        this.name.set(name);
-        nameField.textProperty().set(getName());
+        this.name.set(name + ": ");
     }
 
-    public int getSupplierCount() {
+    public String getSupplierCount() {
         return supplierCount.get();
     }
 
-    public IntegerProperty supplierCountProperty() {
+    public StringProperty supplierCountProperty() {
         return supplierCount;
     }
 
     public void setSupplierCount(int supplierCount) {
-        this.supplierCount.set(supplierCount);
-        nameField.textProperty().set(getName());
+        this.supplierCount.set(String.valueOf(supplierCount));
     }
 }
